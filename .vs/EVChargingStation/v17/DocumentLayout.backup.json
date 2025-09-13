@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\New folder\\EVChargingStation\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0A4E7712-D45C-4915-8D1A-CA71D05C9FE2}|EVChargingStation.Infrastructure\\EVChargingStation.Infrastructure.csproj|e:\\new folder\\evchargingstation\\evchargingstation.infrastructure\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A4E7712-D45C-4915-8D1A-CA71D05C9FE2}|EVChargingStation.Infrastructure\\EVChargingStation.Infrastructure.csproj|solutionrelative:evchargingstation.infrastructure\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,6 +39,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "E:\\New folder\\EVChargingStation\\EVChargingStation.Infrastructure\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\UnitOfWork.cs",
+              "ToolTip": "E:\\New folder\\EVChargingStation\\EVChargingStation.Infrastructure\\UnitOfWork.cs",
+              "RelativeToolTip": "EVChargingStation.Infrastructure\\UnitOfWork.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T18:03:53.44Z",
+              "EditorCaption": ""
             }
           ]
         }

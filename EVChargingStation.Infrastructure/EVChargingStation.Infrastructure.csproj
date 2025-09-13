@@ -10,11 +10,4 @@
     <ProjectReference Include="..\EVChargingStation.Domain\EVChargingStation.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commons\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Utils\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
