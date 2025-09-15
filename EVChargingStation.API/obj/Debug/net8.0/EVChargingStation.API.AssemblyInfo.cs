@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b985bf87-4ee9-49f9-8f58-e86658fe0f84")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("EVChargingStation.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+741aa0db6c84398b75d63f592a5c06851b995f95")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31edbebed97dda054b477f26c9e224c7daacbb63")]
 [assembly: System.Reflection.AssemblyProductAttribute("EVChargingStation.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EVChargingStation.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
