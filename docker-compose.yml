@@ -16,7 +16,7 @@ services:
     ports:
       - "5000:5000"
 
-  movietheater.database:
+  evchargingstation.database:
     image: postgres:15
     restart: always
     environment:
