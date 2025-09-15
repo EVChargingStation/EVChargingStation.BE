@@ -15,6 +15,6 @@
         public User User { get; set; }
         public Session Session { get; set; }
         public Invoice Invoice { get; set; }
-        public WalletTransaction WalletTransaction { get; set; }
+        public ICollection<WalletTransaction> WalletTransactions { get; set; }
     }
 }
