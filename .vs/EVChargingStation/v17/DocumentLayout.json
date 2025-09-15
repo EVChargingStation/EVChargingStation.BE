@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\recommendation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\recommendation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\evchargingstationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\evchargingstationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\staffstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\staffstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\wallettransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,20 +19,24 @@
       "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\wallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\userplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\userplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\staffstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\staffstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,28 +47,40 @@
       "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\recommendation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\recommendation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\connector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\connector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\enums\\connectortype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\enums\\connectortype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\evchargingstationdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\evchargingstationdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B4487F8-3412-4076-94BE-70A2C5D799BA}|EVChargingStation.API\\EVChargingStation.API.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B4487F8-3412-4076-94BE-70A2C5D799BA}|EVChargingStation.API\\EVChargingStation.API.csproj|solutionrelative:evchargingstation.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\enums\\connectortype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\enums\\connectortype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\enums\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -81,10 +93,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.domain\\evchargingstationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68CEAD91-F60B-45DD-B152-91BE790150C5}|EVChargingStation.Domain\\EVChargingStation.Domain.csproj|solutionrelative:evchargingstation.domain\\evchargingstationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0A4E7712-D45C-4915-8D1A-CA71D05C9FE2}|EVChargingStation.Infrastructure\\EVChargingStation.Infrastructure.csproj|e:\\nextjs\\semester7\\evchargingstation.be\\evchargingstation.infrastructure\\commons\\paginationparameter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -170,7 +178,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -198,71 +206,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Recommendation.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Recommendation.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Recommendation.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Recommendation.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Recommendation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:55:00.292Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Report.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Report.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Report.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Report.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Report.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:54:50.455Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StaffStation.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\StaffStation.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\StaffStation.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\StaffStation.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\StaffStation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:54:38.109Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WalletTransaction.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\WalletTransaction.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\WalletTransaction.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\WalletTransaction.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\WalletTransaction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:54:26.782Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Wallet.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Wallet.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Wallet.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Wallet.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Wallet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:54:13.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
               "Title": "UserPlan.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\UserPlan.cs",
@@ -276,41 +219,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Plan.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Plan.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Plan.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Plan.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Plan.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Vehicle.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Vehicle.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Vehicle.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Vehicle.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Vehicle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:53:38.709Z",
+              "WhenOpened": "2025-09-13T10:09:19.38Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
+              "Title": "Wallet.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Wallet.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Wallet.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Wallet.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Wallet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:54:13.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EVChargingStationDbContext.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStationDbContext.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\EVChargingStationDbContext.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStationDbContext.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\EVChargingStationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T08:01:20.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WalletTransaction.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\WalletTransaction.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\WalletTransaction.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\WalletTransaction.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\WalletTransaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:54:26.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Payment.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Payment.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Payment.cs",
               "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Payment.cs",
               "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Payment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T10:53:21.557Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Invoice.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Invoice.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Invoice.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Invoice.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Invoice.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\User.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\User.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\User.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwCMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:48:38.486Z",
+              "WhenOpened": "2025-09-13T09:54:05.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Station.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Station.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Station.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Station.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Station.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:22:16.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "StaffStation.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\StaffStation.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\StaffStation.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\StaffStation.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\StaffStation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:54:38.109Z",
               "EditorCaption": ""
             },
             {
@@ -321,7 +329,7 @@
               "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Session.cs",
               "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Session.cs",
               "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Session.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAIwBIAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T10:39:53.513Z",
               "EditorCaption": ""
@@ -334,7 +342,7 @@
               "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Reservation.cs",
               "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Reservation.cs",
               "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Reservation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T10:39:30.961Z",
               "EditorCaption": ""
@@ -342,162 +350,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "Report.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Report.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Report.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Report.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Report.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:54:50.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Recommendation.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Recommendation.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Recommendation.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Recommendation.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Recommendation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:55:00.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Plan.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Plan.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Plan.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Plan.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Plan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:53:38.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Invoice.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Invoice.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Invoice.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Invoice.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Invoice.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:48:38.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "Connector.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Connector.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Connector.cs",
               "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Connector.cs",
               "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Connector.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T10:32:37.981Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Station.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Station.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Station.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Station.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Station.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "EVChargingStationDbContextFactory.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStationDbContextFactory.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\EVChargingStationDbContextFactory.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStationDbContextFactory.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\EVChargingStationDbContextFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:22:16.253Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ConnectorType.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\ConnectorType.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Enums\\ConnectorType.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\ConnectorType.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Enums\\ConnectorType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:18:55.968Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Vehicle.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Vehicle.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\Vehicle.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\Vehicle.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\Vehicle.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:09:19.38Z",
+              "WhenOpened": "2025-09-15T11:23:58.419Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "UserStatus.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\UserStatus.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Enums\\UserStatus.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\UserStatus.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Enums\\UserStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:07:35.614Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "RoleType.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\RoleType.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Enums\\RoleType.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\RoleType.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Enums\\RoleType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:06:21.734Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Gender.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\Gender.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Enums\\Gender.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\Gender.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Enums\\Gender.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T10:06:00.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "User.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\User.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\User.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\Entities\\User.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA1wBIAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T09:54:05.49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "PaginationParameter.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\PaginationParameter.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Commons\\PaginationParameter.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\PaginationParameter.cs",
-              "RelativeToolTip": "EVChargingStation.Infrastructure\\Commons\\PaginationParameter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:19:47.448Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Pagination.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\Pagination.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Commons\\Pagination.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\Pagination.cs",
-              "RelativeToolTip": "EVChargingStation.Infrastructure\\Commons\\Pagination.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:19:26.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "TokenTools.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\TokenTools.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\TokenTools.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\TokenTools.cs",
-              "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\TokenTools.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:07:48.759Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "StringTools.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\StringTools.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\StringTools.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\StringTools.cs",
-              "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\StringTools.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:07:31.537Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Entities\\BaseEntity.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Domain\\Entities\\BaseEntity.cs",
@@ -510,7 +440,116 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.API\\Program.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.API\\Program.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.API\\Program.cs",
+              "RelativeToolTip": "EVChargingStation.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T10:41:23.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ConnectorType.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\ConnectorType.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Enums\\ConnectorType.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\ConnectorType.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Enums\\ConnectorType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:18:55.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UserStatus.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\UserStatus.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Enums\\UserStatus.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\UserStatus.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Enums\\UserStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:07:35.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RoleType.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\RoleType.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Enums\\RoleType.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\RoleType.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Enums\\RoleType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:06:21.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Gender.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\Gender.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Domain\\Enums\\Gender.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\Enums\\Gender.cs",
+              "RelativeToolTip": "EVChargingStation.Domain\\Enums\\Gender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T10:06:00.77Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "PaginationParameter.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\PaginationParameter.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Commons\\PaginationParameter.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\PaginationParameter.cs",
+              "RelativeToolTip": "EVChargingStation.Infrastructure\\Commons\\PaginationParameter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T08:19:47.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Pagination.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\Pagination.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Commons\\Pagination.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\Pagination.cs",
+              "RelativeToolTip": "EVChargingStation.Infrastructure\\Commons\\Pagination.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T08:19:26.137Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 30,
+              "Title": "TokenTools.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\TokenTools.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\TokenTools.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\TokenTools.cs",
+              "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\TokenTools.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T08:07:48.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "StringTools.cs",
+              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\StringTools.cs",
+              "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\StringTools.cs",
+              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\StringTools.cs",
+              "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\StringTools.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T08:07:31.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "StringExtensions.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\StringExtensions.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\StringExtensions.cs",
@@ -518,12 +557,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\StringExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:03:26.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T08:03:26.058Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\UnitOfWork.cs",
@@ -531,12 +569,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\UnitOfWork.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAABYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T18:03:53.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-11T18:03:53.44Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "ClaimService.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\ClaimService.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Commons\\ClaimService.cs",
@@ -544,25 +581,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Commons\\ClaimService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T07:57:33.665Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T07:57:33.665Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "EVChargingStationDbContext.cs",
-              "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStationDbContext.cs",
-              "RelativeDocumentMoniker": "EVChargingStation.Domain\\EVChargingStationDbContext.cs",
-              "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStationDbContext.cs",
-              "RelativeToolTip": "EVChargingStation.Domain\\EVChargingStationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:01:20.383Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "ResourceHelper.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\ResourceHelper.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\ResourceHelper.cs",
@@ -570,12 +593,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\ResourceHelper.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwB8AAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:02:58.43Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T08:02:58.43Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "IClaimService.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Interfaces\\IClaimService.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Interfaces\\IClaimService.cs",
@@ -583,12 +605,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Interfaces\\IClaimService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T07:58:42.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T07:58:42.638Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "AuthenTools.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\AuthenTools.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\AuthenTools.cs",
@@ -596,12 +617,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\AuthenTools.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:01:57.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T08:01:57.178Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "CurrentTime.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Commons\\CurrentTime.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Commons\\CurrentTime.cs",
@@ -609,12 +629,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Commons\\CurrentTime.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T07:58:11.413Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T07:58:11.413Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "HashHelper.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\HashHelper.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\HashHelper.cs",
@@ -622,12 +641,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\HashHelper.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:02:37.657Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T08:02:37.657Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "GenerateJWTToken.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Utils\\GenerateJWTToken.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Utils\\GenerateJWTToken.cs",
@@ -635,12 +653,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Utils\\GenerateJWTToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:02:18.481Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T08:02:18.481Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Repositories\\GenericRepository.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Repositories\\GenericRepository.cs",
@@ -648,12 +665,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Repositories\\GenericRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T08:00:29.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T08:00:29.258Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Interfaces\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Interfaces\\IUnitOfWork.cs",
@@ -661,12 +677,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Interfaces\\IUnitOfWork.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T07:59:45.288Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T07:59:45.288Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "IGenericRepository.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Interfaces\\IGenericRepository.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Interfaces\\IGenericRepository.cs",
@@ -674,12 +689,11 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Interfaces\\IGenericRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T07:59:15.453Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T07:59:15.453Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "ICurrentTime.cs",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\Interfaces\\ICurrentTime.cs",
               "RelativeDocumentMoniker": "EVChargingStation.Infrastructure\\Interfaces\\ICurrentTime.cs",
@@ -687,34 +701,31 @@
               "RelativeToolTip": "EVChargingStation.Infrastructure\\Interfaces\\ICurrentTime.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T07:58:59.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T07:58:59.178Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "EVChargingStation.Application",
+              "DocumentIndex": 41,
+              "Title": "EVChargingStation.Application.csproj",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Application\\EVChargingStation.Application.csproj",
               "RelativeDocumentMoniker": "EVChargingStation.Application\\EVChargingStation.Application.csproj",
               "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Application\\EVChargingStation.Application.csproj",
               "RelativeToolTip": "EVChargingStation.Application\\EVChargingStation.Application.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-13T07:56:19.342Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T07:56:19.342Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "EVChargingStation.Domain",
+              "DocumentIndex": 40,
+              "Title": "EVChargingStation.Domain.csproj",
               "DocumentMoniker": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStation.Domain.csproj",
               "RelativeDocumentMoniker": "EVChargingStation.Domain\\EVChargingStation.Domain.csproj",
               "ToolTip": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStation.Domain.csproj",
               "RelativeToolTip": "EVChargingStation.Domain\\EVChargingStation.Domain.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-13T07:55:04.89Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-13T07:55:04.89Z"
             }
           ]
         }
