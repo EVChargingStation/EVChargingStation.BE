@@ -55,39 +55,29 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "Minio": {
               "target": "Package",
-              "version": "[8.0.15, )"
+              "version": "[6.0.4, )"
             },
-            "Microsoft.AspNetCore.SignalR.Core": {
+            "QRCoder": {
               "target": "Package",
-              "version": "[1.2.0, )"
+              "version": "[1.6.0, )"
             },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "Resend": {
               "target": "Package",
-              "version": "[8.0.15, )"
-            },
-            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
-              "target": "Package",
-              "version": "[1.21.0, )"
+              "version": "[0.1.1, )"
             },
             "Stripe.net": {
               "target": "Package",
               "version": "[48.2.0, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "System.Drawing.Common": {
               "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[8.0.17, )"
             },
-            "Swashbuckle.AspNetCore.Annotations": {
+            "ZXing.Net": {
               "target": "Package",
-              "version": "[6.6.2, )"
-            },
-            "oqo0.SwaggerThemes": {
-              "target": "Package",
-              "version": "[1.4.3, )"
+              "version": "[0.16.10, )"
             }
           },
           "imports": [
