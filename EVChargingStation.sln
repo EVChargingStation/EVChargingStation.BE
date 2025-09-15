@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36429.23 d17.14
+VisualStudioVersion = 17.14.36429.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVChargingStation.API", "EVChargingStation.API\EVChargingStation.API.csproj", "{4B4487F8-3412-4076-94BE-70A2C5D799BA}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVChargingStation.Infrastructure", "EVChargingStation.Infrastructure\EVChargingStation.Infrastructure.csproj", "{0A4E7712-D45C-4915-8D1A-CA71D05C9FE2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVChargingStation.Domain", "EVChargingStation.Domain\EVChargingStation.Domain.csproj", "{68CEAD91-F60B-45DD-B152-91BE790150C5}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{68CEAD91-F60B-45DD-B152-91BE790150C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68CEAD91-F60B-45DD-B152-91BE790150C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68CEAD91-F60B-45DD-B152-91BE790150C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

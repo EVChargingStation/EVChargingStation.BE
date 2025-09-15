@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace BlindTreasure.Application.Utils;
+namespace EVChargingStation.Application.Utils;
 
 public static class JwtUtils
 {

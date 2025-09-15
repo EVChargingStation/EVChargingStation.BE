@@ -1,0 +1,6 @@
+services:
+  evchargingstation.api:
+    image: ${DOCKER_REGISTRY-}evchargingstationapi
+    build:
+      context: .
+      dockerfile: EVChargingStation.API/Dockerfile

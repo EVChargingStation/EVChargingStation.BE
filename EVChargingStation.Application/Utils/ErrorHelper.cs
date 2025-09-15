@@ -1,4 +1,4 @@
-﻿namespace BlindTreasure.Application.Utils;
+﻿namespace EVChargingStation.Application.Utils;
 
 public static class ErrorHelper
 {

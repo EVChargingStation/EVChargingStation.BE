@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace BlindTreasure.Application.Utils;
+namespace EVChargingStation.Application.Utils;
 
 public class PasswordHasher
 {

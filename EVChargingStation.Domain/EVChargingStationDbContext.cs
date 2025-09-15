@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EVChargingStation.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EVChargingStation.Domain
 {
