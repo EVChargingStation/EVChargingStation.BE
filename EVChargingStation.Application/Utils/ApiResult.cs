@@ -1,9 +1,8 @@
-﻿namespace EVChargingStation.Application.Utils;
+﻿namespace MovieTheater.Application.Utils;
 
 public class ApiResult
 {
     public bool IsSuccess { get; set; }
-    public bool IsFailure => !IsSuccess;
     public ResponseContent Value { get; set; }
     public ErrorContent Error { get; set; }
 
@@ -39,7 +38,6 @@ public class ApiResult
 public class ApiResult<T>
 {
     public bool IsSuccess { get; set; }
-    public bool IsFailure => !IsSuccess;
     public ResponseDataContent<T> Value { get; set; }
     public ErrorContent Error { get; set; }
 
@@ -58,19 +56,12 @@ public class ApiResult<T>
         };
     }
 
-    public static ApiResult<T> Failure(string code = "400", string message = "Operation failed.", T value = default)
+    public static ApiResult<T> Failure(string code = "400", string message = "Operation failed.")
     {
         return new ApiResult<T>
         {
             IsSuccess = false,
-            Value = value == null
-                ? null
-                : new ResponseDataContent<T>
-                {
-                    Code = code,
-                    Message = message,
-                    Data = value
-                },
+            Value = null,
             Error = new ErrorContent
             {
                 Code = code,

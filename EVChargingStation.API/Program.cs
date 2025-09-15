@@ -1,73 +1,121 @@
-using Microsoft.AspNetCore.Diagnostics;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using EVChargingStation.API.Architecture;
+using MovieTheater.API.Architecture;
+using Stripe;
 using SwaggerThemes;
 using System.IdentityModel.Tokens.Jwt;
+using System.Text.Json;
 using System.Text.Json.Serialization;
-using EVChargingStation.API.Architecture;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddControllers()
-    .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); });
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-// builder.Services.SetupIocContainer();
-builder.Configuration
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json", true, true)
-    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true)
-    .AddEnvironmentVariables(); // Cái này luôn phải nằm cuối
+builder.Services.AddSwaggerGen();
+builder.Services.SetupIocContainer();
 
-builder.Services.AddCors(hehe =>
+builder.Configuration
+    .AddJsonFile("appsettings.json", true, true)
+    .AddEnvironmentVariables();
+
+// Configure Stripe settings
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+
+// Validate Stripe configuration
+var stripeSecretKey = builder.Configuration["Stripe:SecretKey"];
+var stripePublishableKey = builder.Configuration["Stripe:PublishableKey"];
+
+// Set Stripe API key
+StripeConfiguration.ApiKey = stripeSecretKey;
+
+// Set up Stripe app info
+var appInfo = new AppInfo { Name = "MovieTheater", Version = "v1" };
+StripeConfiguration.AppInfo = appInfo;
+
+// Register HTTP client for Stripe
+builder.Services.AddHttpClient("Stripe");
+
+// Register the StripeClient as a service
+builder.Services.AddTransient<IStripeClient, StripeClient>(s =>
 {
-    hehe.AddPolicy("AllowFrontend",
-        builder =>
+    var clientFactory = s.GetRequiredService<IHttpClientFactory>();
+
+    var sysHttpClient = new SystemNetHttpClient(
+        clientFactory.CreateClient("Stripe"),
+        StripeConfiguration.MaxNetworkRetries,
+        appInfo,
+        StripeConfiguration.EnableTelemetry);
+
+    return new StripeClient(stripeSecretKey, httpClient: sysHttpClient);
+});
+
+if (string.IsNullOrEmpty(stripeSecretKey))
+{
+    Console.WriteLine("CRITICAL: Stripe Secret Key is missing! Payment processing will fail.");
+}
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
         {
-            builder
-                .WithOrigins(
-                    "http://localhost:4040",
-                    "https://blindtreasure.vercel.app"
-                )
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials()
-                .SetIsOriginAllowed(_ => true); // Allow WebSocket
+            policy.WithOrigins(
+                "https://movietheaterfe.ae-tao-fullstack-api.site",  // Production
+                "http://localhost:3000",                             // Local dev
+                "http://localhost:3001"                              // Local dev
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
         });
 });
 
 builder.Services.AddControllers()
-    .AddNewtonsoftJson(options =>
+    .AddJsonOptions(options =>
     {
-        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-        options.SerializerSettings.NullValueHandling = NullValueHandling.Include;
-        options.SerializerSettings.Converters.Add(new StringEnumConverter());
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     });
-
 
 // Tắt việc map claim mặc định
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-
 builder.WebHost.UseUrls("http://0.0.0.0:5000");
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+builder.Services.AddHostedService<EventAutoCleanupBackgroundService>();
 
-
+builder.Services.AddSignalR(options =>
+{
+    options.EnableDetailedErrors = true;
+});
 var app = builder.Build();
 
+// Check chắc chắn MinIO bucket đã tồn tại sau khi project build
+using (var scope = app.Services.CreateScope())
+{
+    var blob = scope.ServiceProvider.GetRequiredService<IBlobService>();
+    await blob.EnsureBucketExistsAsync();
+}
+
 app.UseCors("AllowFrontend");
+
+// Configure the HTTP request pipeline - REMEMBER
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlindTreasureAPI API v1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "MovieTheater API v1");
         c.RoutePrefix = string.Empty;
-        c.HeadContent = $"<style>{SwaggerTheme.GetSwaggerThemeCss(Theme.OneDark)}</style>";
-        c.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
-        c.InjectJavascript("/custom-swagger.js");
-        // c.InjectStylesheet("/custom-swagger.css");
+        c.InjectStylesheet("/swagger-ui/custom-theme.css");
+        c.HeadContent = $"<style>{SwaggerTheme.GetSwaggerThemeCss(Theme.Dracula)}</style>";
     });
 }
 
@@ -80,39 +128,13 @@ catch (Exception e)
     app.Logger.LogError(e, "An problem occurred during migration!");
 }
 
-//test thử middle ware này
-app.UseExceptionHandler(errorApp =>
-{
-    errorApp.Run(async context =>
-    {
-        context.Response.StatusCode = 500;
-        context.Response.ContentType = "application/json";
-        var error = context.Features.Get<IExceptionHandlerFeature>()?.Error;
-        // Format theo ApiResult
-        var apiResult = new
-        {
-            isSuccess = false,
-            isFailure = true,
-            value = (object?)null,
-            error = new
-            {
-                code = "500",
-                message = "Đã xảy ra lỗi hệ thống.",
-                detail = error?.Message
-            }
-        };
-
-        var result = JsonSerializer.Serialize(apiResult);
-        await context.Response.WriteAsync(result);
-    });
-});
-app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
+app.UseSession();
 
-app.UseStaticFiles();
+// Map SignalR hubs
+app.MapHub<SeatHub>("/hubs/seat").RequireCors("AllowFrontend");
+app.MapHub<ChatbotHub>("/hubs/chatbot").RequireCors("AllowFrontend");
 
 app.Run();

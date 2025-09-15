@@ -1,6 +1,32 @@
 services:
   evchargingstation.api:
-    image: ${DOCKER_REGISTRY-}evchargingstationapi
+    image: ch1mple/evchargingstation-api:latest
     build:
       context: .
       dockerfile: EVChargingStation.API/Dockerfile
+    depends_on:
+      evchargingstation.database:
+        condition: service_started
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=103.211.201.162;Port=5434;Database=evchargingstation_db;Username=postgres;Password=postgres
+      - JWT__SecretKey=EVChargingStation_SECRETKEY_SIEUCAPBAOMAT_VAYMACHUADU16KYTU
+      - JWT__Issuer=EVChargingStation_Issuer
+      - JWT__Audience=EVChargingStation_Audience
+    ports:
+      - "5000:5000"
+
+  movietheater.database:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: evchargingstation_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

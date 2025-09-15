@@ -24,9 +24,9 @@
     <ProjectReference Include="..\EVChargingStation.Infrastructure\EVChargingStation.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Interfaces\ThirdParties\" />
+	  <Folder Include="Services\ThirdParties\" />
+	</ItemGroup>
 
 </Project>
