@@ -27,8 +27,8 @@ builder.Services.AddCors(hehe =>
         {
             builder
                 .WithOrigins(
-                    "http://localhost:4040",
-                    "https://blindtreasure.vercel.app"
+                    // "http://localhost:4040",
+                    // "https://blindtreasure.vercel.app"
                 )
                 .AllowAnyMethod()
                 .AllowAnyHeader()
