@@ -1,11 +1,15 @@
-﻿namespace EVChargingStation.Domain.Entities
+﻿using EVChargingStation.Domain.Enums;
+
+namespace EVChargingStation.Domain.Entities
 {
     public class WalletTransaction : BaseEntity
     {
         public Guid WalletId { get; set; }
         public long Amount { get; set; }
-        public string Type { get; set; }
-        public string Reference { get; set; }
+        public WalletType Type { get; set; }
+
+        // Optional references to other entities (nếu cần)
+        public string Reference { get; set; }   
         public Guid? PaymentId { get; set; }
         public Guid? SessionId { get; set; }
         public Guid? InvoiceId { get; set; }

@@ -14,6 +14,7 @@ namespace EVChargingStation.Domain
         public DbSet<User> Users { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Station> Stations { get; set; }
+        public DbSet<Location> Locations { get; set; }
         public DbSet<Connector> Connectors { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Session> Sessions { get; set; }
@@ -30,6 +31,12 @@ namespace EVChargingStation.Domain
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // Location ↔ Station (one-to-many)
+            modelBuilder.Entity<Station>()
+                .HasOne(s => s.Location)  
+                .WithMany(l => l.Stations)
+                .HasForeignKey(s => s.LocationId);
 
             // User ↔ Vehicle (one-to-many)
             modelBuilder.Entity<Vehicle>()

@@ -1495,23 +1495,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Users\\vieta\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\EVChargingStation.Infrastructure.csproj",
+      "projectUniqueName": "D:\\Project\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\EVChargingStation.Infrastructure.csproj",
       "projectName": "EVChargingStation.Infrastructure",
-      "projectPath": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\EVChargingStation.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\obj\\",
+      "projectPath": "D:\\Project\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\EVChargingStation.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\vieta\\.nuget\\packages\\",
+      "outputPath": "D:\\Project\\Semester7\\EVChargingStation.BE\\EVChargingStation.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vieta\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1519,7 +1519,6 @@
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -1527,8 +1526,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStation.Domain.csproj": {
-              "projectPath": "E:\\NextJS\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStation.Domain.csproj"
+            "D:\\Project\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStation.Domain.csproj": {
+              "projectPath": "D:\\Project\\Semester7\\EVChargingStation.BE\\EVChargingStation.Domain\\EVChargingStation.Domain.csproj"
             }
           }
         }
@@ -1564,7 +1563,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
