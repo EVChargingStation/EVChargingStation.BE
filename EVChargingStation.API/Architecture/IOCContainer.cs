@@ -78,9 +78,9 @@ public static class IocContainer
 
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "MovieTheaterAPI",
+                Title = "EVChargingStationAPI",
                 Version = "v1",
-                Description = "API for MovieTheater Ticket Management System",
+                Description = "API for EV Charging Station Management",
             });
             var jwtSecurityScheme = new OpenApiSecurityScheme
             {
