@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EVChargingStation.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02b3792c15d4763117faec03602b6419fee0db62")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18a9a051966f87b3e8b2477ba8fc9ffda8fa25e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("EVChargingStation.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EVChargingStation.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

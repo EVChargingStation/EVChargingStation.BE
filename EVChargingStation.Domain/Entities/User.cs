@@ -28,8 +28,8 @@ namespace EVChargingStation.Domain.Entities
         public ICollection<Invoice> Invoices { get; set; }
         public ICollection<Payment> Payments { get; set; }
         public ICollection<UserPlan> UserPlans { get; set; }
-        public Wallet Wallet { get; set; }
         public ICollection<Recommendation> Recommendations { get; set; }
         public ICollection<StaffStation> StaffStations { get; set; }
+        public ICollection<Report> Reports { get; set; }
     }
 }

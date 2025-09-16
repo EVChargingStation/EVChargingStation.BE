@@ -22,8 +22,6 @@ namespace EVChargingStation.Domain
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<UserPlan> UserPlans { get; set; }
-        public DbSet<Wallet> Wallets { get; set; }
-        public DbSet<WalletTransaction> WalletTransactions { get; set; }
         public DbSet<StaffStation> StaffStations { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Recommendation> Recommendations { get; set; }
@@ -34,7 +32,7 @@ namespace EVChargingStation.Domain
 
             // Location ↔ Station (one-to-many)
             modelBuilder.Entity<Station>()
-                .HasOne(s => s.Location)  
+                .HasOne(s => s.Location)
                 .WithMany(l => l.Stations)
                 .HasForeignKey(s => s.LocationId);
 
@@ -80,24 +78,38 @@ namespace EVChargingStation.Domain
                 .WithMany(u => u.Sessions)
                 .HasForeignKey(s => s.UserId);
 
+            // Session ↔ Invoice (many-to-one)
+            modelBuilder.Entity<Session>()
+                .HasOne(s => s.Invoice)
+                .WithMany(i => i.Sessions)
+                .HasForeignKey(s => s.InvoiceId)
+                .OnDelete(DeleteBehavior.SetNull);
+
             // Invoice ↔ User (many-to-one)
             modelBuilder.Entity<Invoice>()
                 .HasOne(i => i.User)
                 .WithMany(u => u.Invoices)
                 .HasForeignKey(i => i.UserId);
 
-            // Payment ↔ Invoice (many-to-one)
+            // Payment ↔ Invoice (many-to-one, optional)
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.Invoice)
                 .WithMany(i => i.Payments)
-                .HasForeignKey(p => p.InvoiceId);
+                .HasForeignKey(p => p.InvoiceId)
+                .OnDelete(DeleteBehavior.SetNull);
 
-            // Payment ↔ Session (optional)
+            // Payment ↔ Session (many-to-one, optional)
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.Session)
                 .WithMany(s => s.Payments)
                 .HasForeignKey(p => p.SessionId)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            // (Optional explicit) Payment ↔ User (many-to-one)
+            modelBuilder.Entity<Payment>()
+                .HasOne(p => p.User)
+                .WithMany(u => u.Payments)
+                .HasForeignKey(p => p.UserId);
 
             // UserPlan ↔ User (many-to-one)
             modelBuilder.Entity<UserPlan>()
@@ -111,25 +123,6 @@ namespace EVChargingStation.Domain
                 .WithMany(p => p.UserPlans)
                 .HasForeignKey(up => up.PlanId);
 
-            // Wallet ↔ User (one-to-one)
-            modelBuilder.Entity<Wallet>()
-                .HasOne(w => w.User)
-                .WithOne(u => u.Wallet)
-                .HasForeignKey<Wallet>(w => w.UserId);
-
-            // WalletTransaction ↔ Wallet (many-to-one)
-            modelBuilder.Entity<WalletTransaction>()
-                .HasOne(wt => wt.Wallet)
-                .WithMany(w => w.WalletTransactions)
-                .HasForeignKey(wt => wt.WalletId);
-
-            // WalletTransaction ↔ Payment (optional)
-            modelBuilder.Entity<WalletTransaction>()
-                .HasOne(wt => wt.Payment)
-                .WithMany(p => p.WalletTransactions)
-                .HasForeignKey(wt => wt.PaymentId)
-                .OnDelete(DeleteBehavior.SetNull);
-
             // StaffStation ↔ User (many-to-one)
             modelBuilder.Entity<StaffStation>()
                 .HasOne(ss => ss.StaffUser)
@@ -141,6 +134,14 @@ namespace EVChargingStation.Domain
                 .HasOne(ss => ss.Station)
                 .WithMany(s => s.StaffStations)
                 .HasForeignKey(ss => ss.StationId);
+
+            // Report ↔ Staff (User) (many-to-one)
+            modelBuilder.Entity<Report>()
+                .HasOne(r => r.User)
+                .WithMany(u => u.Reports)
+                .HasForeignKey(r => r.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
 
             // Recommendation ↔ User (many-to-one)
             modelBuilder.Entity<Recommendation>()

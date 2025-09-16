@@ -16,6 +16,7 @@
         // Energy consumed in kWh during the session
         public decimal? EnergyKwh { get; set; }
         public decimal Cost { get; set; }
+
         public Guid? InvoiceId { get; set; }
 
         // Navigation property

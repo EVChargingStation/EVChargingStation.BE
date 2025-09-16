@@ -1,4 +1,5 @@
 using EVChargingStation.API.Architecture;
+using EVChargingStation.Application.Interfaces;
 using MovieTheater.API.Architecture;
 using SwaggerThemes;
 using System.IdentityModel.Tokens.Jwt;
@@ -135,9 +136,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.UseSession();
-
-// Map SignalR hubs
-app.MapHub<SeatHub>("/hubs/seat").RequireCors("AllowFrontend");
-app.MapHub<ChatbotHub>("/hubs/chatbot").RequireCors("AllowFrontend");
 
 app.Run();
