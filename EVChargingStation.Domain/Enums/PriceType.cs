@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EVChargingStation.Domain.Enums
+﻿namespace EVChargingStation.Domain.Enums
 {
     public enum PriceType
     {
-        Prepaid,
-        Postpaid,
-        VIP
+        PrePaid = 0,
+        Free = 1
     }
 }

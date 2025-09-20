@@ -1,0 +1,177 @@
+// =========================================================
+// EV Charging Station Management System — Station-level Reservations
+// =========================================================
+
+Table users {
+  id               int [pk, increment]
+  email            varchar(255) [not null, unique]
+  phone            varchar(20) [unique]
+  password_hash    varchar(255) [not null]
+  first_name       varchar(50) [not null]
+  last_name        varchar(50) [not null]
+  date_of_birth    date
+  gender           enum('Male','Female')
+  address          text
+  role             enum('driver','staff','admin') [not null]
+  created_at       timestamp [default: 'now()']
+  updated_at       timestamp
+}
+
+Table vehicles {
+  id               int [pk, increment]
+  user_id          int [not null, ref: > users.id]
+  make             varchar(50) [not null]
+  model            varchar(50) [not null]
+  year             int
+  license_plate    varchar(20)
+  connector_type   enum('CCS','CHAdeMO','AC') [not null]
+}
+
+// -------------------- Locations --------------------
+Table locations {
+  id               int [pk, increment]
+  name             varchar(100)                      // optional label
+  address          text [not null]
+  latitude         decimal(10,7) [not null]
+  longitude        decimal(10,7) [not null]
+  city             varchar(100)
+  state_province   varchar(100)
+  country          varchar(100)
+  timezone         varchar(50)
+  created_at       timestamp [default: 'now()']
+  updated_at       timestamp
+}
+
+// -------------------- Stations --------------------
+Table stations {
+  id               int [pk, increment]
+  name             varchar(100) [not null]
+  location_id      int [not null, ref: > locations.id]
+  status           enum('online','offline') [default: 'online']
+  created_at       timestamp [default: 'now()']
+}
+
+// -------------------- Connectors --------------------
+Table connectors {
+  id               int [pk, increment]
+  station_id       int [not null, ref: > stations.id]
+  connector_type   enum('CCS','CHAdeMO','AC') [not null]
+  power_kw         decimal(5,2) [not null]
+  status           enum('free','occupied','maintenance','offline') [default: 'free']
+  price_per_kwh    decimal(6,3) [not null]
+}
+
+// -------------------- Reservations (station-level) --------------------
+Table reservations {
+  id                     int [pk, increment]
+  user_id                int [not null, ref: > users.id]
+  station_id             int [not null, ref: > stations.id]          // hold a station
+  connector_id  int [ref: > connectors.id]                  // null until check-in
+
+  preferred_connector_type enum('CCS','CHAdeMO','AC')                // compatibility hint
+  min_power_kw           decimal(5,2)                                // optional filter
+
+  price_type             enum('pre_paid','free') [default: 'free']   // fixed enum values
+  start_time             timestamp [not null]
+  end_time               timestamp
+  status                 enum('pending','confirmed','canceled','completed','expired') [default: 'pending']
+}
+
+// -------------------- Sessions --------------------
+Table sessions {
+  id               int [pk, increment]
+  connector_id     int [not null, ref: > connectors.id]
+  user_id          int [not null, ref: > users.id]
+  reservation_id   int [ref: > reservations.id]      // link back to reservation (nullable)
+  start_time       timestamp [not null]
+  end_time         timestamp
+  status           enum('running','stopped','failed') [default: 'running']
+  soc_start        decimal(5,2)
+  soc_end          decimal(5,2)
+  energy_kwh       decimal(6,3)
+  cost             decimal(8,2)
+}
+
+// -------------------- Invoicing (Postpaid) --------------------
+Table invoices {
+  id               int [pk, increment]
+  user_id          int [not null, ref: > users.id]
+  session_id       int [ref: > sessions.id]          // optional; one-invoice-per-session model
+  period_start     date [not null]
+  period_end       date [not null]
+  status           enum('draft','issued','paid','overdue','void') [default: 'draft']
+  subtotal_amount  decimal(10,2) [default: 0]
+  tax_amount       decimal(10,2) [default: 0]
+  total_amount     decimal(10,2) [default: 0]
+  amount_paid      decimal(10,2) [default: 0]
+  due_date         date
+  issued_at        timestamp
+  created_at       timestamp [default: 'now()']
+}
+
+// -------------------- Payments --------------------
+Table payments {
+  id               int [pk, increment]
+  amount           decimal(10,2) [not null]
+  status           enum('pending','completed','failed','refunded') [default: 'pending']
+  created_at       timestamp [default: 'now()']
+  invoice_id       int [ref: > invoices.id]          // settle invoices only
+}
+
+// -------------------- Plans & Subscriptions --------------------
+Table plans {
+  id               int [pk, increment]
+  name             varchar(50) [not null]
+  description      text
+  type             enum('prepaid','postpaid','vip') [not null]
+  price            decimal(8,2)
+  max_daily_kwh    decimal(6,3)
+  created_at       timestamp [default: 'now()']
+}
+
+Table user_plans {
+  id               int [pk, increment]
+  user_id          int [not null, ref: > users.id]
+  plan_id          int [not null, ref: > plans.id]
+  start_date       timestamp [not null]
+  end_date         timestamp
+}
+
+// -------------------- Staff, Reports, AI Recommendations --------------------
+Table staff_stations {
+  id               int [pk, increment]
+  staff_user_id    int [not null, ref: > users.id]
+  station_id       int [not null, ref: > stations.id]
+}
+
+Table reports {
+  id               int [pk, increment]
+  type             varchar(50)
+  period_start     timestamp
+  period_end       timestamp
+  data             json
+  generated_at     timestamp [default: 'now()']
+  staff_user_id    int [ref: > users.id]             // which staff generated/owns the report
+}
+
+Table recommendations {
+  id               int [pk, increment]
+  user_id          int [not null, ref: > users.id]
+  station_id       int [not null, ref: > stations.id]
+  connector_id     int [ref: > connectors.id]
+  suggested_at     timestamp [default: 'now()']
+  confidence_score decimal(3,2)
+}
+
+// -------------------- (Optional) Index & integrity hints --------------------
+// Note: Enforce capacity by time window in app logic or DB-specific constraints.
+// Example ideas (documented only):
+// Indexes {
+//   (stations.location_id)
+//   (connectors.station_id, connectors.connector_type)
+//   (reservations.station_id, reservations.start_time)
+//   (sessions.connector_id, sessions.start_time)
+// }
+
+
+Ref: "staff_stations"."id" < "staff_stations"."staff_user_id"

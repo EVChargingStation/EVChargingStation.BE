@@ -4,6 +4,6 @@
     {
         Driver = 0,
         Staff = 1,
-        Admin = 2,
+        Admin = 2
     }
 }

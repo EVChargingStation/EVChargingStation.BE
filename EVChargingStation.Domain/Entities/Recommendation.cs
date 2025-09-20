@@ -1,11 +1,18 @@
-﻿namespace EVChargingStation.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EVChargingStation.Domain.Entities
 {
     public class Recommendation : BaseEntity
     {
-        public Guid UserId { get; set; }
-        public Guid StationId { get; set; }
-        public Guid? ConnectorId { get; set; }
-        public DateTime SuggestedAt { get; set; }
+        [Required]
+        public int UserId { get; set; }
+        
+        [Required]
+        public int StationId { get; set; }
+        
+        public int? ConnectorId { get; set; }
+        
+        public DateTime SuggestedAt { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         /// ConfidenceScore base on: 
@@ -13,12 +20,12 @@
         /// - The distance between the user and the station.
         /// - Historical data or user behavior patterns that suggest certain stations or connectors are frequently used successfully.
         /// </summary>
-        public decimal ConfidenceScore { get; set; }
+        [Range(0, 1)]
+        public decimal? ConfidenceScore { get; set; }
 
-
-        // Navigation property
-        public User User { get; set; }
-        public Station Station { get; set; }
-        public Connector Connector { get; set; }
+        // Navigation properties
+        public User User { get; set; } = null!;
+        public Station Station { get; set; } = null!;
+        public Connector? Connector { get; set; }
     }
 }

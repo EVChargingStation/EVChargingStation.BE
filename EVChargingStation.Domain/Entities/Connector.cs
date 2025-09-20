@@ -1,19 +1,30 @@
 ﻿using EVChargingStation.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace EVChargingStation.Domain.Entities
 {
     public class Connector : BaseEntity
     {
-        public Guid StationId { get; set; }
+        [Required]
+        public int StationId { get; set; }
+        
+        [Required]
         public ConnectorType ConnectorType { get; set; }
+        
+        [Required]
+        [Range(0, 1000)]
         public decimal PowerKw { get; set; }
-        public string Status { get; set; }
+        
+        public ConnectorStatus Status { get; set; } = ConnectorStatus.Free;
+        
+        [Required]
+        [Range(0, 10000)]
         public decimal PricePerKwh { get; set; }
 
         // Navigation property
-        public Station Station { get; set; }
-        public ICollection<Reservation> Reservations { get; set; }
-        public ICollection<Session> Sessions { get; set; }
-        public ICollection<Recommendation> Recommendations { get; set; }
+        public Station Station { get; set; } = null!;
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public ICollection<Session> Sessions { get; set; } = new List<Session>();
+        public ICollection<Recommendation> Recommendations { get; set; } = new List<Recommendation>();
     }
 }

@@ -1,18 +1,42 @@
-﻿namespace EVChargingStation.Domain.Entities
+﻿using EVChargingStation.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
+
+namespace EVChargingStation.Domain.Entities
 {
     public class Invoice : BaseEntity
     {
-        public Guid UserId { get; set; }
-        public string Status { get; set; }
-        public decimal SubtotalAmount { get; set; }
-        public decimal TaxAmount { get; set; }
-        public decimal TotalAmount { get; set; }
-        public decimal AmountPaid { get; set; }
+        [Required]
+        public int UserId { get; set; }
+        
+        public int? SessionId { get; set; }
+        
+        [Required]
+        public DateTime PeriodStart { get; set; }
+        
+        [Required]
+        public DateTime PeriodEnd { get; set; }
+        
+        public InvoiceStatus Status { get; set; } = InvoiceStatus.Draft;
+        
+        [Range(0, 1000000)]
+        public decimal SubtotalAmount { get; set; } = 0;
+        
+        [Range(0, 1000000)]
+        public decimal TaxAmount { get; set; } = 0;
+        
+        [Range(0, 1000000)]
+        public decimal TotalAmount { get; set; } = 0;
+        
+        [Range(0, 1000000)]
+        public decimal AmountPaid { get; set; } = 0;
+        
+        public DateTime? DueDate { get; set; }
+        
+        public DateTime? IssuedAt { get; set; }
 
-        // Navigations
-        public User User { get; set; }
-        public ICollection<Session> Sessions { get; set; }
-        public ICollection<Payment> Payments { get; set; }
+        // Navigation properties
+        public User User { get; set; } = null!;
+        public ICollection<Session> Sessions { get; set; } = new List<Session>();
+        public ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
-
 }

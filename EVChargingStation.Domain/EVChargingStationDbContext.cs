@@ -54,17 +54,25 @@ namespace EVChargingStation.Domain
                 .WithMany(u => u.Reservations)
                 .HasForeignKey(r => r.UserId);
 
-            // Reservation ↔ Connector (many-to-one)
+            // Reservation ↔ Station (many-to-one)
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.Station)
+                .WithMany(s => s.Reservations)
+                .HasForeignKey(r => r.StationId);
+
+            // Reservation ↔ Connector (many-to-one, optional)
             modelBuilder.Entity<Reservation>()
                 .HasOne(r => r.Connector)
                 .WithMany(c => c.Reservations)
-                .HasForeignKey(r => r.ConnectorId);
+                .HasForeignKey(r => r.ConnectorId)
+                .IsRequired(false);
 
-            // Session ↔ Reservation (one-to-one)
+            // Session ↔ Reservation (one-to-one, optional)
             modelBuilder.Entity<Session>()
                 .HasOne(s => s.Reservation)
                 .WithOne(r => r.Session)
-                .HasForeignKey<Session>(s => s.ReservationId);
+                .HasForeignKey<Session>(s => s.ReservationId)
+                .IsRequired(false);
 
             // Session ↔ Connector (many-to-one)
             modelBuilder.Entity<Session>()
@@ -78,11 +86,12 @@ namespace EVChargingStation.Domain
                 .WithMany(u => u.Sessions)
                 .HasForeignKey(s => s.UserId);
 
-            // Session ↔ Invoice (many-to-one)
+            // Session ↔ Invoice (many-to-one, optional)
             modelBuilder.Entity<Session>()
                 .HasOne(s => s.Invoice)
                 .WithMany(i => i.Sessions)
                 .HasForeignKey(s => s.InvoiceId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
 
             // Invoice ↔ User (many-to-one)
@@ -96,6 +105,7 @@ namespace EVChargingStation.Domain
                 .HasOne(p => p.Invoice)
                 .WithMany(i => i.Payments)
                 .HasForeignKey(p => p.InvoiceId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
 
             // Payment ↔ Session (many-to-one, optional)
@@ -103,9 +113,10 @@ namespace EVChargingStation.Domain
                 .HasOne(p => p.Session)
                 .WithMany(s => s.Payments)
                 .HasForeignKey(p => p.SessionId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            // (Optional explicit) Payment ↔ User (many-to-one)
+            // Payment ↔ User (many-to-one)
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.User)
                 .WithMany(u => u.Payments)
@@ -135,13 +146,13 @@ namespace EVChargingStation.Domain
                 .WithMany(s => s.StaffStations)
                 .HasForeignKey(ss => ss.StationId);
 
-            // Report ↔ Staff (User) (many-to-one)
+            // Report ↔ Staff (User) (many-to-one, optional)
             modelBuilder.Entity<Report>()
                 .HasOne(r => r.User)
                 .WithMany(u => u.Reports)
                 .HasForeignKey(r => r.UserId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
-
 
             // Recommendation ↔ User (many-to-one)
             modelBuilder.Entity<Recommendation>()
@@ -160,6 +171,7 @@ namespace EVChargingStation.Domain
                 .HasOne(r => r.Connector)
                 .WithMany(c => c.Recommendations)
                 .HasForeignKey(r => r.ConnectorId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
         }
     }

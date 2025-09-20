@@ -1,23 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EVChargingStation.Domain.Entities
 {
     public class Location : BaseEntity
     {
-        // Station name = Station A, B, ..
-        public string Name { get; set; }           
-        public string Address { get; set; }
+        [MaxLength(100)]
+        public string? Name { get; set; }
+        
+        [Required]
+        public string Address { get; set; } = string.Empty;
 
-
-        // Kinh độ, vĩ độ (lưu trên map)
-        public decimal Latitude { get; set; }   
-        public decimal Longitude { get; set; }   
+        [Required]
+        [Range(-90, 90)]
+        public decimal Latitude { get; set; }
+        
+        [Required]
+        [Range(-180, 180)]
+        public decimal Longitude { get; set; }
+        
+        [MaxLength(100)]
+        public string? City { get; set; }
+        
+        [MaxLength(100)]
+        public string? StateProvince { get; set; }
+        
+        [MaxLength(100)]
+        public string? Country { get; set; }
+        
+        [MaxLength(50)]
+        public string? Timezone { get; set; }
 
         // Navigation Property
-        public ICollection<Station> Stations { get; set; } 
+        public ICollection<Station> Stations { get; set; } = new List<Station>();
     }
 }

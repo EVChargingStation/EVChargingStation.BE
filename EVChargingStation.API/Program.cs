@@ -101,12 +101,12 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-// Check chắc chắn MinIO bucket đã tồn tại sau khi project build
-using (var scope = app.Services.CreateScope())
-{
-    var blob = scope.ServiceProvider.GetRequiredService<IBlobService>();
-    await blob.EnsureBucketExistsAsync();
-}
+// // Check chắc chắn MinIO bucket đã tồn tại sau khi project build
+// using (var scope = app.Services.CreateScope())
+// {
+//     var blob = scope.ServiceProvider.GetRequiredService<IBlobService>();
+//     await blob.EnsureBucketExistsAsync();
+// }
 
 app.UseCors("AllowFrontend");
 
