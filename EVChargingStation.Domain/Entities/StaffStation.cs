@@ -5,10 +5,10 @@ namespace EVChargingStation.Domain.Entities
     public class StaffStation : BaseEntity
     {
         [Required]
-        public int StaffUserId { get; set; }
+        public Guid StaffUserId { get; set; }
         
         [Required]
-        public int StationId { get; set; }
+        public Guid StationId { get; set; }
 
         // Navigation properties
         public User StaffUser { get; set; } = null!;

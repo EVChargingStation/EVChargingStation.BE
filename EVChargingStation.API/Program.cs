@@ -1,6 +1,5 @@
 using EVChargingStation.API.Architecture;
 using EVChargingStation.Application.Interfaces;
-using MovieTheater.API.Architecture;
 using SwaggerThemes;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text.Json;

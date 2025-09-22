@@ -13,11 +13,11 @@ namespace EVChargingStation.Domain.Entities
         
         public string? Note { get; set; }
         
-        public int? InvoiceId { get; set; }
+        public Guid? InvoiceId { get; set; }
         
-        public int? SessionId { get; set; }
+        public Guid? SessionId { get; set; }
         
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
 
         // Navigation properties
         public User User { get; set; } = null!;

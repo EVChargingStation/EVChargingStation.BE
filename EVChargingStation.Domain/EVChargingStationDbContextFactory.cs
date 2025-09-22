@@ -4,12 +4,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace EVChargingStation.Domain
 {
-    public class EVChargingStationDbContextFactory : IDesignTimeDbContextFactory<EVChargingStationDbContext>
+    public class EVChargingStationDbContextFactory : IDesignTimeDbContextFactory<EvChargingStationDbContext>
     {
-        public EVChargingStationDbContext CreateDbContext(string[] args)
+        public EvChargingStationDbContext CreateDbContext(string[] args)
         {
             // For migrations and other design-time operations
-            var optionsBuilder = new DbContextOptionsBuilder<EVChargingStationDbContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<EvChargingStationDbContext>();
             
             // Set up configuration to read connection string
             var configuration = new ConfigurationBuilder()
@@ -21,24 +21,11 @@ namespace EVChargingStation.Domain
             // Get the connection string from configuration
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             
-            // Note: You need to uncomment one of the following options and 
-            // add the corresponding NuGet package to your project:
-            
-            // For SQL Server: Microsoft.EntityFrameworkCore.SqlServer
-            // optionsBuilder.UseSqlServer(connectionString);
-            
             // For PostgreSQL: Npgsql.EntityFrameworkCore.PostgreSQL
-            // optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseNpgsql(connectionString, 
+                npgsqlOptionsAction => npgsqlOptionsAction.MigrationsAssembly(typeof(EvChargingStationDbContext).Assembly.FullName));
             
-            // For MySQL: Pomelo.EntityFrameworkCore.MySql
-            // optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-            
-            // For in-memory (testing): Microsoft.EntityFrameworkCore.InMemory
-            // optionsBuilder.UseInMemoryDatabase("EVChargingStationDb");
-
-            // For demonstration purposes, we'll create a temporary context without a provider
-            // This will not work for migrations but prevents compilation errors
-            return new EVChargingStationDbContext(optionsBuilder.Options);
+            return new EvChargingStationDbContext(optionsBuilder.Options);
         }
     }
 }

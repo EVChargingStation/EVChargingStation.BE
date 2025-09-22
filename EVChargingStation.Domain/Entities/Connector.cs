@@ -6,7 +6,7 @@ namespace EVChargingStation.Domain.Entities
     public class Connector : BaseEntity
     {
         [Required]
-        public int StationId { get; set; }
+        public Guid StationId { get; set; }
         
         [Required]
         public ConnectorType ConnectorType { get; set; }

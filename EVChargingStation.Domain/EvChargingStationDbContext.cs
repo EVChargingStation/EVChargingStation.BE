@@ -1,13 +1,14 @@
 ﻿using EVChargingStation.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace EVChargingStation.Domain
 {
-    public class EVChargingStationDbContext : DbContext
+    public class EvChargingStationDbContext : DbContext
     {
-        public EVChargingStationDbContext() { }
+        public EvChargingStationDbContext() { }
 
-        public EVChargingStationDbContext(DbContextOptions<EVChargingStationDbContext> options)
+        public EvChargingStationDbContext(DbContextOptions<EvChargingStationDbContext> options)
             : base(options)
         { }
 
@@ -173,6 +174,26 @@ namespace EVChargingStation.Domain
                 .HasForeignKey(r => r.ConnectorId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.SetNull);
+        }
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                // This is a fallback configuration in case the options aren't provided
+                var configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: false)
+                    .AddJsonFile("appsettings.Development.json", optional: true)
+                    .Build();
+
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
+                
+                if (!string.IsNullOrEmpty(connectionString))
+                {
+                    optionsBuilder.UseNpgsql(connectionString);
+                }
+            }
         }
     }
 }

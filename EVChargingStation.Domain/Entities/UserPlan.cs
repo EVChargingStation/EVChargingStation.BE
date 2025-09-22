@@ -5,10 +5,10 @@ namespace EVChargingStation.Domain.Entities
     public class UserPlan : BaseEntity
     {
         [Required]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         
         [Required]
-        public int PlanId { get; set; }
+        public Guid PlanId { get; set; }
         
         [Required]
         public DateTime StartDate { get; set; }

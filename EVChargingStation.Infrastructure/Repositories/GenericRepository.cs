@@ -9,11 +9,11 @@ namespace EVChargingStation.Infrastructure.Repositories
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly IClaimsService _claimsService;
-        private readonly EVChargingStationDbContext _dbContext;
+        private readonly EvChargingStationDbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
         private readonly ICurrentTime _timeService;
 
-        public GenericRepository(EVChargingStationDbContext context, ICurrentTime timeService, IClaimsService claimsService)
+        public GenericRepository(EvChargingStationDbContext context, ICurrentTime timeService, IClaimsService claimsService)
         {
             _dbSet = context.Set<TEntity>();
             _dbContext = context;

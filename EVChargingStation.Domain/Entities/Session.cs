@@ -6,12 +6,12 @@ namespace EVChargingStation.Domain.Entities
     public class Session : BaseEntity
     {
         [Required]
-        public int ConnectorId { get; set; }
+        public Guid ConnectorId { get; set; }
         
         [Required]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         
-        public int? ReservationId { get; set; }
+        public Guid? ReservationId { get; set; }
         
         [Required]
         public DateTime StartTime { get; set; }
@@ -29,7 +29,7 @@ namespace EVChargingStation.Domain.Entities
         
         public decimal? Cost { get; set; }
         
-        public int? InvoiceId { get; set; }
+        public Guid? InvoiceId { get; set; }
 
         // Navigation properties
         public Connector Connector { get; set; } = null!;

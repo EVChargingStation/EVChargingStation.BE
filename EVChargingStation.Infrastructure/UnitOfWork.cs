@@ -5,9 +5,9 @@ namespace EVChargingStation.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly EVChargingStationDbContext _dbContext;
+        private readonly EvChargingStationDbContext _dbContext;
 
-        public UnitOfWork(EVChargingStationDbContext dbContext)
+        public UnitOfWork(EvChargingStationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -6,12 +6,12 @@ namespace EVChargingStation.Domain.Entities
     public class Reservation : BaseEntity
     {
         [Required]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         
         [Required]
-        public int StationId { get; set; }
+        public Guid StationId { get; set; }
         
-        public int? ConnectorId { get; set; }
+        public Guid? ConnectorId { get; set; }
         
         public ConnectorType? PreferredConnectorType { get; set; }
         

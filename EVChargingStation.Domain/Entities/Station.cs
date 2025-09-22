@@ -9,7 +9,7 @@ namespace EVChargingStation.Domain.Entities
         [MaxLength(100)]
         public string Name { get; set; } = string.Empty;
         
-        public int LocationId { get; set; }
+        public Guid LocationId { get; set; }
         
         public StationStatus Status { get; set; } = StationStatus.Online;
 

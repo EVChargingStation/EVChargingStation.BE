@@ -16,7 +16,7 @@ namespace EVChargingStation.Domain.Entities
         public DateTime GeneratedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation property
-        public int? UserId { get; set; }
+        public Guid? UserId { get; set; }
         public User? User { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using EVChargingStation.Application.Interfaces.Commons;
+﻿using System.Text;
+using EVChargingStation.Application.Interfaces.Commons;
 using EVChargingStation.Application.Services.Commons;
 using EVChargingStation.Domain;
 using EVChargingStation.Infrastructure;
@@ -9,9 +10,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
 
-namespace MovieTheater.API.Architecture;
+namespace EVChargingStation.API.Architecture;
 
 public static class IocContainer
 {
@@ -49,9 +49,9 @@ public static class IocContainer
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
         // Đăng ký DbContext với Npgsql - Postgres
-        services.AddDbContext<EVChargingStationDbContext>(options =>
+        services.AddDbContext<EvChargingStationDbContext>(options =>
             options.UseNpgsql(connectionString,
-                sql => sql.MigrationsAssembly(typeof(EVChargingStationDbContext).Assembly.FullName)
+                sql => sql.MigrationsAssembly(typeof(EvChargingStationDbContext).Assembly.FullName)
             )
         );
 

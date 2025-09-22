@@ -1,4 +1,4 @@
-﻿namespace MovieTheater.Application.Utils;
+﻿namespace EVChargingStation.Application.Utils;
 
 public static class ExceptionUtils
 {

@@ -13,7 +13,7 @@ public static class MigrationExtensions
             using var scope = app.ApplicationServices.CreateScope();
 
             using var dbContext =
-                scope.ServiceProvider.GetRequiredService<EVChargingStationDbContext>();
+                scope.ServiceProvider.GetRequiredService<EvChargingStationDbContext>();
 
             dbContext.Database.Migrate();
             _logger.LogInformation("Migrations applied successfully!");
