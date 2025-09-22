@@ -11,7 +11,7 @@ services:
         condition: service_healthy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=localhost;Port=5433;Database=evchargingstation_db;Username=postgres;Password=postgres
+      - ConnectionStrings__DefaultConnection=Host=evchargingstation.database;Port=5432;Database=evchargingstation_db;Username=postgres;Password=postgres;TimeZone=Asia/Ho_Chi_Minh
       - JWT__SecretKey=EVChargingStation_SECRETKEY_SIEUCAPBAOMAT_VAYMACHUADU16KYTU
       - JWT__Issuer=EVChargingStation_Issuer
       - JWT__Audience=EVChargingStation_Audience
@@ -19,13 +19,12 @@ services:
       - "5000:5000"
 
   evchargingstation.database:
-    image: postgres:latest   # thay vì postgres:15
+    image: postgres:latest
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: evchargingstation_db
-      TZ: Asia/Ho_Chi_Minh
     ports:
       - "5433:5432"
     volumes:
