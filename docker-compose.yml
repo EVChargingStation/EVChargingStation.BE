@@ -1,6 +1,185 @@
 services:
+  # API Gateway
   gateway.ocelot:
-    image: ${DOCKER_REGISTRY-}gatewayocelot
     build:
       context: .
-      dockerfile: gateway.ocelot/Dockerfile
+      dockerfile: ./gateway.ocelot/Dockerfile
+    ports:
+      - "8000:8080"
+    depends_on:
+      - identity.api
+      - station.api
+      - session.api
+      - billing.api
+      - staff.api
+    networks:
+      - evcharging-network
+    # Tối ưu resource
+    mem_limit: 256m
+    cpus: 0.5
+    restart: unless-stopped
+
+  # Microservices
+  identity.api:
+    build:
+      context: .
+      dockerfile: ./services/identity.api/Dockerfile
+    expose:
+      - "8080"
+    depends_on:
+      shared-postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=identity_db;Username=postgres;Password=postgres
+      - RabbitMQ__Host=rabbitmq
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - evcharging-network
+    # Tối ưu resource
+    mem_limit: 256m
+    cpus: 0.3
+    restart: unless-stopped
+
+  station.api:
+    build:
+      context: .
+      dockerfile: ./services/station.api/Dockerfile
+    expose:
+      - "8080"
+    depends_on:
+      shared-postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=station_db;Username=postgres;Password=postgres
+      - RabbitMQ__Host=rabbitmq
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - evcharging-network
+    # Tối ưu resource
+    mem_limit: 256m
+    cpus: 0.3
+    restart: unless-stopped
+
+  session.api:
+    build:
+      context: .
+      dockerfile: ./services/session.api/Dockerfile
+    expose:
+      - "8080"
+    depends_on:
+      shared-postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=session_db;Username=postgres;Password=postgres
+      - RabbitMQ__Host=rabbitmq
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - evcharging-network
+    # Tối ưu resource
+    mem_limit: 256m
+    cpus: 0.3
+    restart: unless-stopped
+
+  billing.api:
+    build:
+      context: .
+      dockerfile: ./services/billing.api/Dockerfile
+    expose:
+      - "8080"
+    depends_on:
+      shared-postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=billing_db;Username=postgres;Password=postgres
+      - RabbitMQ__Host=rabbitmq
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - evcharging-network
+    # Tối ưu resource
+    mem_limit: 256m
+    cpus: 0.3
+    restart: unless-stopped
+
+  staff.api:
+    build:
+      context: .
+      dockerfile: ./services/staff.api/Dockerfile
+    expose:
+      - "8080"
+    depends_on:
+      shared-postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=staff_db;Username=postgres;Password=postgres
+      - RabbitMQ__Host=rabbitmq
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - evcharging-network
+    # Tối ưu resource
+    mem_limit: 256m
+    cpus: 0.3
+    restart: unless-stopped
+
+  # Shared Database - One PostgreSQL instance with multiple databases
+  shared-postgres:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_DATABASES=identity_db,station_db,session_db,billing_db,staff_db
+    volumes:
+      - ./init-databases.sh:/docker-entrypoint-initdb.d/init-databases.sh:ro
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - evcharging-network
+    # Tối ưu resource
+    mem_limit: 512m
+    cpus: 0.5
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Message Broker
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - evcharging-network
+    # Tối ưu resource
+    mem_limit: 512m
+    cpus: 0.5
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "rabbitmq-diagnostics check_port_connectivity"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+networks:
+  evcharging-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  rabbitmq-data:
