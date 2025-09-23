@@ -1,0 +1,6 @@
+services:
+  gateway.ocelot:
+    image: ${DOCKER_REGISTRY-}gatewayocelot
+    build:
+      context: .
+      dockerfile: gateway.ocelot/Dockerfile
