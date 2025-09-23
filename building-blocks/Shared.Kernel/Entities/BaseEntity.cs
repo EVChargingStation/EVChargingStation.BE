@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace staff.api.Data.Entities
+namespace Shared.Kernel.Entities
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         [Key] public Guid Id { get; set; }
 

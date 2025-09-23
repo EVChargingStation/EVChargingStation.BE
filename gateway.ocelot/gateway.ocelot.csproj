@@ -10,4 +10,8 @@
     <PackageReference Include="Ocelot" Version="24.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\building-blocks\Shared.Kernel\Shared.Kernel.csproj" />
+  </ItemGroup>
+
 </Project>

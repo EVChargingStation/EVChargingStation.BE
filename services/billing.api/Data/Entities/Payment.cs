@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using billing.api.Data.Enums;
+using Shared.Kernel.Entities;
 
 namespace billing.api.Data.Entities
 {

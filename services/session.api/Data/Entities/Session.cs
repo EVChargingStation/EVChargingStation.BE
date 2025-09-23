@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using session.api.Data.Enums;
+using Shared.Kernel.Entities;
 
 namespace session.api.Data.Entities
 {

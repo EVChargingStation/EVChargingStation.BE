@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using station.api.Data.Enums;
+using Shared.Kernel.Entities;
 
 namespace station.api.Data.Entities
 {

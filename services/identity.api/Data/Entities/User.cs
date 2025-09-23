@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using identity.api.Data.Enums;
+using Shared.Kernel.Entities;
 
 namespace identity.api.Data.Entities
 {

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Shared.Kernel.Entities;
 
 namespace staff.api.Data.Entities
 {
