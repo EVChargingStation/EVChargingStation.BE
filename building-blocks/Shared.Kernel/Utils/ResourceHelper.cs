@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Shared.Kernel.Utitls;
+namespace Shared.Kernel.Utils;
 
 public static class ResourceHelper
 {

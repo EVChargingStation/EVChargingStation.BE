@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddHealthChecks();
 
 // Configure Ocelot from ocelot.json
-builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("ocelot.json", false, true);
 
 var app = builder.Build();
 

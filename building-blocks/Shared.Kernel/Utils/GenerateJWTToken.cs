@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Shared.Kernel.Utitls;
+namespace Shared.Kernel.Utils;
 
 public static class GenerateJWTToken
 {

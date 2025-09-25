@@ -31,7 +31,7 @@
     <ItemGroup>
         <Folder Include="Application\"/>
         <Folder Include="Controllers\"/>
-        <Folder Include="Controllers\" />
+        <Folder Include="Controllers\"/>
         <Folder Include="Domain\DTOs\"/>
     </ItemGroup>
 

@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Shared.Kernel.Utitls;
+namespace Shared.Kernel.Utils;
 
 public class PasswordHasher
 {

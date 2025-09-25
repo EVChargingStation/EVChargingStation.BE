@@ -10,7 +10,9 @@
         }
       ],
       "UpstreamPathTemplate": "/",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
     },
     {
       "DownstreamPathTemplate": "/health",
@@ -22,7 +24,9 @@
         }
       ],
       "UpstreamPathTemplate": "/health",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
     },
     {
       "DownstreamPathTemplate": "/{everything}",
@@ -34,7 +38,13 @@
         }
       ],
       "UpstreamPathTemplate": "/identity-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "OPTIONS"
+      ]
     },
     {
       "DownstreamPathTemplate": "/{everything}",
@@ -46,7 +56,13 @@
         }
       ],
       "UpstreamPathTemplate": "/station-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "OPTIONS"
+      ]
     },
     {
       "DownstreamPathTemplate": "/{everything}",
@@ -58,7 +74,13 @@
         }
       ],
       "UpstreamPathTemplate": "/session-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "OPTIONS"
+      ]
     },
     {
       "DownstreamPathTemplate": "/{everything}",
@@ -70,7 +92,13 @@
         }
       ],
       "UpstreamPathTemplate": "/billing-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "OPTIONS"
+      ]
     },
     {
       "DownstreamPathTemplate": "/{everything}",
@@ -82,7 +110,13 @@
         }
       ],
       "UpstreamPathTemplate": "/staff-api/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "OPTIONS"
+      ]
     }
   ]
 }

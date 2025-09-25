@@ -9,13 +9,13 @@ services:
     depends_on:
       rabbitmq:
         condition: service_healthy
+      postgres:
+        condition: service_healthy
       identity.api:
         condition: service_started
       station.api:
         condition: service_started
       session.api:
-        condition: service_started
-      billing.api:
         condition: service_started
       staff.api:
         condition: service_started
@@ -28,12 +28,12 @@ services:
     mem_limit: 256m
     cpus: 0.5
     restart: unless-stopped
-#    healthcheck:
-#      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
-#      interval: 30s
-#      timeout: 10s
-#      retries: 3
-#      start_period: 40s
+  #    healthcheck:
+  #      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+  #      interval: 30s
+  #      timeout: 10s
+  #      retries: 3
+  #      start_period: 40s
 
   # Microservices
   identity.api:
@@ -43,12 +43,12 @@ services:
     expose:
       - "8080"
     depends_on:
-      shared-postgres:
+      postgres:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
     environment:
-      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=identity_db;Username=postgres;Password=postgres
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=identity_db;Username=postgres;Password=postgres
       - RabbitMQ__Host=rabbitmq
       - ASPNETCORE_ENVIRONMENT=Production
     networks:
@@ -65,12 +65,12 @@ services:
     expose:
       - "8080"
     depends_on:
-      shared-postgres:
+      postgres:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
     environment:
-      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=station_db;Username=postgres;Password=postgres
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=station_db;Username=postgres;Password=postgres
       - RabbitMQ__Host=rabbitmq
       - ASPNETCORE_ENVIRONMENT=Production
     networks:
@@ -87,34 +87,12 @@ services:
     expose:
       - "8080"
     depends_on:
-      shared-postgres:
+      postgres:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
     environment:
-      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=session_db;Username=postgres;Password=postgres
-      - RabbitMQ__Host=rabbitmq
-      - ASPNETCORE_ENVIRONMENT=Production
-    networks:
-      - evcharging-network
-    # Tối ưu resource
-    mem_limit: 256m
-    cpus: 0.3
-    restart: unless-stopped
-
-  billing.api:
-    build:
-      context: .
-      dockerfile: ./services/billing.api/Dockerfile
-    expose:
-      - "8080"
-    depends_on:
-      shared-postgres:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
-    environment:
-      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=billing_db;Username=postgres;Password=postgres
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=session_db;Username=postgres;Password=postgres
       - RabbitMQ__Host=rabbitmq
       - ASPNETCORE_ENVIRONMENT=Production
     networks:
@@ -131,12 +109,12 @@ services:
     expose:
       - "8080"
     depends_on:
-      shared-postgres:
+      postgres:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
     environment:
-      - ConnectionStrings__DefaultConnection=Host=shared-postgres;Database=staff_db;Username=postgres;Password=postgres
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=staff_db;Username=postgres;Password=postgres
       - RabbitMQ__Host=rabbitmq
       - ASPNETCORE_ENVIRONMENT=Production
     networks:
@@ -146,27 +124,28 @@ services:
     cpus: 0.3
     restart: unless-stopped
 
-  # Shared Database - One PostgreSQL instance with multiple databases
-  shared-postgres:
-    image: postgres:14-alpine
+  # PostgreSQL Database - One instance with multiple databases
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5433:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_MULTIPLE_DATABASES=identity_db,station_db,session_db,billing_db,staff_db
+      - POSTGRES_DB=postgres
+      - POSTGRES_INITDB_ARGS=--auth-host=md5
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ./init-databases.sh:/docker-entrypoint-initdb.d/init-databases.sh
+      - ./scripts/init-databases.sh:/docker-entrypoint-initdb.d/init-databases.sh
     networks:
       - evcharging-network
-    # Tối ưu resource
-    mem_limit: 512m
-    cpus: 0.5
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d postgres" ]
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s
 
   # Message Broker
   rabbitmq:

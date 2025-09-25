@@ -2,7 +2,7 @@
 
 #pragma warning disable CS8603 // Possible null reference return =))
 
-namespace Shared.Kernel.Utitls;
+namespace Shared.Kernel.Utils;
 
 public static class AuthenTools
 {
