@@ -1,4 +1,4 @@
-namespace session.api.Data.Enums;
+namespace session.api.Domain.Enums;
 
 public enum PriceType
 {

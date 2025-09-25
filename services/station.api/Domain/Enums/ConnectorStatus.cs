@@ -1,4 +1,4 @@
-namespace station.api.Data.Enums;
+namespace station.api.Domain.Enums;
 
 public enum ConnectorStatus
 {

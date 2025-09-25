@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using staff.api.Data.Entities;
+using staff.api.Domain.Entities;
 
-namespace staff.api.Data;
+namespace staff.api.Domain;
 
 public class StaffDbContext : DbContext
 {

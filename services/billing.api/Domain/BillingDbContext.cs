@@ -1,7 +1,7 @@
 using billing.api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace billing.api.Domain.Enums;
+namespace billing.api.Domain;
 
 public class BillingDbContext : DbContext
 {

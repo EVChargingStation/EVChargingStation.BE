@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using station.api.Data.Entities;
+using station.api.Domain.Entities;
 
-namespace station.api.Data;
+namespace station.api.Domain;
 
 public class StationDbContext : DbContext
 {

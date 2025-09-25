@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using session.api.Data.Entities;
+using session.api.Domain.Entities;
 
-namespace session.api.Data;
+namespace session.api.Domain;
 
 public class SessionDbContext : DbContext
 {

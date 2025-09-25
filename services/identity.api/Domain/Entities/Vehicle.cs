@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using identity.api.Data.Enums;
+using identity.api.Domain.Enums;
 using Shared.Kernel.Entities;
 
-namespace identity.api.Data.Entities;
+namespace identity.api.Domain.Entities;
 
 public class Vehicle : BaseEntity
 {

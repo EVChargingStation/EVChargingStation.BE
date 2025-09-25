@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Shared.Kernel.Entities;
 
-namespace staff.api.Data.Entities;
+namespace staff.api.Domain.Entities;
 
 public class Recommendation : BaseEntity
 {

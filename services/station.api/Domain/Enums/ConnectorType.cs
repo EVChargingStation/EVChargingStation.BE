@@ -1,4 +1,4 @@
-namespace station.api.Data.Enums;
+namespace station.api.Domain.Enums;
 
 /// <summary>
 // Các chuẩn sạc (connector type)

@@ -1,4 +1,4 @@
-namespace session.api.Data.Enums;
+namespace session.api.Domain.Enums;
 
 /// <summary>
 // Các chuẩn sạc (connector type)

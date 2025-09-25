@@ -1,4 +1,4 @@
-namespace identity.api.Data.Enums;
+namespace identity.api.Domain.Enums;
 
 /// <summary>
 // Các chuẩn sạc (connector type)

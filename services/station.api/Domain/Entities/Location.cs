@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Shared.Kernel.Entities;
 
-namespace station.api.Data.Entities;
+namespace station.api.Domain.Entities;
 
 public class Location : BaseEntity
 {

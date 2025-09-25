@@ -1,4 +1,4 @@
-namespace identity.api.Data.Enums;
+namespace identity.api.Domain.Enums;
 
 public enum RoleType
 {

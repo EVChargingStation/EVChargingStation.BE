@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using session.api.Data.Enums;
+using session.api.Domain.Enums;
 using Shared.Kernel.Entities;
 
-namespace session.api.Data.Entities;
+namespace session.api.Domain.Entities;
 
 public class Session : BaseEntity
 {

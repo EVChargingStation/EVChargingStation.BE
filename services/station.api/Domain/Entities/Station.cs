@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using Shared.Kernel.Entities;
-using station.api.Data.Enums;
+using station.api.Domain.Enums;
 
-namespace station.api.Data.Entities;
+namespace station.api.Domain.Entities;
 
 public class Station : BaseEntity
 {

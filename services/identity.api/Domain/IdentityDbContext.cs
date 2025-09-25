@@ -1,7 +1,7 @@
-using identity.api.Data.Entities;
+using identity.api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace identity.api.Data;
+namespace identity.api.Domain;
 
 public class IdentityDbContext : DbContext
 {
