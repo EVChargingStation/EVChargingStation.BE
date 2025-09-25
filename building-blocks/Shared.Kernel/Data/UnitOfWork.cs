@@ -1,96 +1,88 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Shared.Kernel.Data
+namespace Shared.Kernel.Data;
+
+public class UnitOfWork : IUnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+    protected readonly DbContext _context;
+    private readonly Dictionary<Type, object> _repositories;
+    private bool _disposed;
+    private IDbContextTransaction _transaction;
+
+    public UnitOfWork(DbContext context)
     {
-        protected readonly DbContext _context;
-        private IDbContextTransaction _transaction;
-        private bool _disposed;
-        private readonly Dictionary<Type, object> _repositories;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+        _repositories = new Dictionary<Type, object>();
+    }
 
-        public UnitOfWork(DbContext context)
+    public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class
+    {
+        var entityType = typeof(TEntity);
+
+        if (!_repositories.ContainsKey(entityType))
+            _repositories[entityType] = new GenericRepository<TEntity>(_context);
+
+        return (IGenericRepository<TEntity>)_repositories[entityType];
+    }
+
+    public async Task<int> SaveChangesAsync()
+    {
+        return await _context.SaveChangesAsync();
+    }
+
+    public async Task BeginTransactionAsync()
+    {
+        _transaction = await _context.Database.BeginTransactionAsync();
+    }
+
+    public async Task CommitTransactionAsync()
+    {
+        try
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-            _repositories = new Dictionary<Type, object>();
+            await _context.SaveChangesAsync();
+            await _transaction?.CommitAsync();
         }
-
-        public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class
+        finally
         {
-            var entityType = typeof(TEntity);
-
-            if (!_repositories.ContainsKey(entityType))
+            if (_transaction != null)
             {
-                _repositories[entityType] = new GenericRepository<TEntity>(_context);
-            }
-
-            return (IGenericRepository<TEntity>)_repositories[entityType];
-        }
-
-        public async Task<int> SaveChangesAsync()
-        {
-            return await _context.SaveChangesAsync();
-        }
-
-        public async Task BeginTransactionAsync()
-        {
-            _transaction = await _context.Database.BeginTransactionAsync();
-        }
-
-        public async Task CommitTransactionAsync()
-        {
-            try
-            {
-                await _context.SaveChangesAsync();
-                await _transaction?.CommitAsync();
-            }
-            finally
-            {
-                if (_transaction != null)
-                {
-                    await _transaction.DisposeAsync();
-                    _transaction = null;
-                }
+                await _transaction.DisposeAsync();
+                _transaction = null;
             }
         }
+    }
 
-        public async Task RollbackTransactionAsync()
+    public async Task RollbackTransactionAsync()
+    {
+        try
         {
-            try
+            if (_transaction != null) await _transaction.RollbackAsync();
+        }
+        finally
+        {
+            if (_transaction != null)
             {
-                if (_transaction != null)
-                {
-                    await _transaction.RollbackAsync();
-                }
-            }
-            finally
-            {
-                if (_transaction != null)
-                {
-                    await _transaction.DisposeAsync();
-                    _transaction = null;
-                }
+                await _transaction.DisposeAsync();
+                _transaction = null;
             }
         }
+    }
 
-        public void Dispose()
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposed && disposing)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            _context.Dispose();
+            _transaction?.Dispose();
         }
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!_disposed && disposing)
-            {
-                _context.Dispose();
-                _transaction?.Dispose();
-            }
-            _disposed = true;
-        }
+        _disposed = true;
     }
 }

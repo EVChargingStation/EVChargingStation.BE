@@ -1,9 +1,8 @@
-namespace session.api.Data.Enums
+namespace session.api.Data.Enums;
+
+public enum SessionStatus
 {
-    public enum SessionStatus
-    {
-        Running = 0,
-        Stopped = 1,
-        Failed = 2
-    }
+    Running = 0,
+    Stopped = 1,
+    Failed = 2
 }

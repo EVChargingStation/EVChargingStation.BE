@@ -1,9 +1,8 @@
-namespace identity.api.Data.Enums
+namespace identity.api.Data.Enums;
+
+public enum RoleType
 {
-    public enum RoleType
-    {
-        Driver = 0,
-        Staff = 1,
-        Admin = 2
-    }
+    Driver = 0,
+    Staff = 1,
+    Admin = 2
 }

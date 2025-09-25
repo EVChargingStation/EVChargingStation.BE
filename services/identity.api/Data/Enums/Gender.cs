@@ -1,8 +1,7 @@
-namespace identity.api.Data.Enums
+namespace identity.api.Data.Enums;
+
+public enum Gender
 {
-    public enum Gender
-    {
-        Male,
-        Female
-    }
+    Male,
+    Female
 }

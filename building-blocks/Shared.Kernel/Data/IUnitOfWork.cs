@@ -1,14 +1,10 @@
-using System;
-using System.Threading.Tasks;
+namespace Shared.Kernel.Data;
 
-namespace Shared.Kernel.Data
+public interface IUnitOfWork : IDisposable
 {
-    public interface IUnitOfWork : IDisposable
-    {
-        IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class;
-        Task<int> SaveChangesAsync();
-        Task BeginTransactionAsync();
-        Task CommitTransactionAsync();
-        Task RollbackTransactionAsync();
-    }
+    IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class;
+    Task<int> SaveChangesAsync();
+    Task BeginTransactionAsync();
+    Task CommitTransactionAsync();
+    Task RollbackTransactionAsync();
 }

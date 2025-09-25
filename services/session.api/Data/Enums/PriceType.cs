@@ -1,8 +1,7 @@
-namespace session.api.Data.Enums
+namespace session.api.Data.Enums;
+
+public enum PriceType
 {
-    public enum PriceType
-    {
-        PrePaid = 0,
-        Free = 1
-    }
+    PrePaid = 0,
+    Free = 1
 }

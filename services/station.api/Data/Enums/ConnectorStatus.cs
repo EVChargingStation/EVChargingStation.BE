@@ -1,10 +1,9 @@
-namespace station.api.Data.Enums
+namespace station.api.Data.Enums;
+
+public enum ConnectorStatus
 {
-    public enum ConnectorStatus
-    {
-        Free = 0,
-        Occupied = 1,
-        Maintenance = 2,
-        Offline = 3
-    }
+    Free = 0,
+    Occupied = 1,
+    Maintenance = 2,
+    Offline = 3
 }

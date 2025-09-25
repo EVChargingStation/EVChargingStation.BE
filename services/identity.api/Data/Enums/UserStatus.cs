@@ -1,10 +1,9 @@
-namespace identity.api.Data.Enums
+namespace identity.api.Data.Enums;
+
+public enum UserStatus
 {
-    public enum UserStatus
-    {
-        Pending = 0,
-        Active = 1,
-        Banned = 2,
-        Deleted = 3,
-    }
+    Pending = 0,
+    Active = 1,
+    Banned = 2,
+    Deleted = 3
 }
