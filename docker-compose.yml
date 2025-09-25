@@ -12,12 +12,20 @@ services:
       - session.api
       - billing.api
       - staff.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
     networks:
       - evcharging-network
     # Tối ưu resource
     mem_limit: 256m
     cpus: 0.5
     restart: unless-stopped
+#    healthcheck:
+#      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+#      interval: 30s
+#      timeout: 10s
+#      retries: 3
+#      start_period: 40s
 
   # Microservices
   identity.api:
@@ -138,8 +146,32 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_MULTIPLE_DATABASES=identity_db,station_db,session_db,billing_db,staff_db
     volumes:
-      - ./init-databases.sh:/docker-entrypoint-initdb.d/init-databases.sh:ro
       - postgres-data:/var/lib/postgresql/data
+    # Create init-database script directly in docker-compose
+    command: >
+      bash -c '
+        cat > /docker-entrypoint-initdb.d/init-databases.sh << EOF
+        #!/bin/bash
+        set -e
+
+        function create_user_and_database() {
+          local database=\$$1
+          echo "  Creating database \$$database"
+          psql -v ON_ERROR_STOP=1 --username "\$$POSTGRES_USER" <<-EOSQL
+            CREATE DATABASE \$$database;
+        EOSQL
+        }
+
+        if [ -n "\$$POSTGRES_MULTIPLE_DATABASES" ]; then
+          echo "Multiple database creation requested: \$$POSTGRES_MULTIPLE_DATABASES"
+          for db in \$$(echo \$$POSTGRES_MULTIPLE_DATABASES | tr "," " "); do
+            create_user_and_database \$$db
+          done
+          echo "Multiple databases created"
+        fi
+        EOF
+        chmod +x /docker-entrypoint-initdb.d/init-databases.sh &&
+        exec docker-entrypoint.sh postgres'
     networks:
       - evcharging-network
     # Tối ưu resource

@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{58
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "identity.api", "services\identity.api\identity.api.csproj", "{31E1F89F-855D-4C20-9F7E-56D698C782B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gateway.ocelot", "gateway.ocelot\gateway.ocelot.csproj", "{38AD30DA-03D0-417F-A941-5077FC916402}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gateway.ocelot", "gateway.ocelot\APIGateway.Ocelot.csproj", "{38AD30DA-03D0-417F-A941-5077FC916402}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "building-blocks", "building-blocks", "{31CBEB51-93DC-9CA1-DA8D-67643319BEE1}"
 EndProject
