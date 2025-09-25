@@ -7,13 +7,21 @@ services:
     ports:
       - "8000:8080"
     depends_on:
-      - identity.api
-      - station.api
-      - session.api
-      - billing.api
-      - staff.api
+      rabbitmq:
+        condition: service_healthy
+      identity.api:
+        condition: service_started
+      station.api:
+        condition: service_started
+      session.api:
+        condition: service_started
+      billing.api:
+        condition: service_started
+      staff.api:
+        condition: service_started
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
     networks:
       - evcharging-network
     # Tối ưu resource
@@ -147,31 +155,7 @@ services:
       - POSTGRES_MULTIPLE_DATABASES=identity_db,station_db,session_db,billing_db,staff_db
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    # Create init-database script directly in docker-compose
-    command: >
-      bash -c '
-        cat > /docker-entrypoint-initdb.d/init-databases.sh << EOF
-        #!/bin/bash
-        set -e
-
-        function create_user_and_database() {
-          local database=\$$1
-          echo "  Creating database \$$database"
-          psql -v ON_ERROR_STOP=1 --username "\$$POSTGRES_USER" <<-EOSQL
-            CREATE DATABASE \$$database;
-        EOSQL
-        }
-
-        if [ -n "\$$POSTGRES_MULTIPLE_DATABASES" ]; then
-          echo "Multiple database creation requested: \$$POSTGRES_MULTIPLE_DATABASES"
-          for db in \$$(echo \$$POSTGRES_MULTIPLE_DATABASES | tr "," " "); do
-            create_user_and_database \$$db
-          done
-          echo "Multiple databases created"
-        fi
-        EOF
-        chmod +x /docker-entrypoint-initdb.d/init-databases.sh &&
-        exec docker-entrypoint.sh postgres'
+      - ./init-databases.sh:/docker-entrypoint-initdb.d/init-databases.sh
     networks:
       - evcharging-network
     # Tối ưu resource

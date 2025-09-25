@@ -27,11 +27,11 @@ app.UseCors("CorsPolicy");
 // Add Ocelot middleware to pipeline
 app.UseRouting();
 
-// Map health check endpoint
-app.MapHealthChecks("/health");
-
 // Map root endpoint
 app.MapGet("/", () => "EV Charging Station API Gateway");
+
+// Map health check endpoint
+app.MapHealthChecks("/health");
 
 // Configure Ocelot
 await app.UseOcelot();
