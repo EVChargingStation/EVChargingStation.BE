@@ -1,152 +1,72 @@
-# EVCHARGINGSTATION - Backend Microservices
+# EVCharging Station - Backend Microservices
 
-## Tổng quan kiến trúc
+## Tổng quan
 
-Project này được xây dựng theo kiến trúc microservices, sử dụng API Gateway và các khối xây dựng (building blocks) dùng chung. Hệ thống được thiết kế để xử lý các hoạt động của trạm sạc xe điện, bao gồm quản lý người dùng, quản lý trạm, các phiên sạc, thanh toán và báo cáo.
+Hệ thống backend cho trạm sạc xe điện được xây dựng theo kiến trúc microservices với API Gateway. Hệ thống quản lý toàn bộ quy trình từ xác thực người dùng, quản lý trạm sạc, phiên sạc, thanh toán đến báo cáo.
 
-## Cấu trúc Project
+## Kiến trúc hệ thống
 
 ```
 EVChargingStation/
-├── EVChargingStation.sln
-├── docker-compose.yml
-├── docker-compose.override.yml
-├── gateway.ocelot/         # API Gateway, là cổng vào duy nhất cho tất cả request từ client.
-├── building-blocks/
-│   ├── Shared.Kernel/      # Chứa các logic domain và class cơ sở dùng chung cho toàn bộ hệ thống.
-│   └── Shared.Messaging/   # Hỗ trợ giao tiếp giữa các services, thường qua message queue.
-└── services/
-    ├── identity.api/       # Quản lý định danh, xử lý xác thực, phân quyền và thông tin người dùng.
-    ├── station.api/        # Quản lý thông tin các trạm sạc, trạng thái và các cổng sạc (connector).
-    ├── session.api/        # Quản lý các phiên sạc (charging session) và việc đặt chỗ trước.
-    ├── billing.api/        # Xử lý các vấn đề về thanh toán, hóa đơn và các gói dịch vụ.
-    ├── staff.api/          # Cung cấp chức năng cho nhân viên, ví dụ như báo cáo, bảo trì.
-    └── reporting.api/      # Tổng hợp, phân tích dữ liệu và đưa ra các báo cáo, đề xuất.
+├── gateway.ocelot/         # API Gateway - Entry point duy nhất cho client
+├── building-blocks/        # Các thành phần dùng chung
+│   ├── Shared.Kernel/      # Domain logic, Entity base, Result patterns  
+│   └── Shared.Messaging/   # Event messaging, Service contracts
+└── services/              # Các microservices
+    ├── identity.api/       # Xác thực, phân quyền, quản lý user & vehicle
+    ├── station.api/        # Quản lý trạm sạc, connector, vị trí
+    ├── session.api/        # Phiên sạc, đặt chỗ, real-time monitoring
+    ├── billing.api/        # Thanh toán, hóa đơn, subscription
+    └── staff.api/          # Nghiệp vụ nhân viên, báo cáo vận hành
 ```
 
-## Các thành phần
+## Chi tiết Services
 
-### API Gateway
-- **gateway.ocelot**: Điểm vào (entry point) cho tất cả request từ client. Chịu trách nhiệm routing, xác thực và cân bằng tải (load balancing) bằng Ocelot.
+| Service | Chức năng chính |
+|---------|----------------|
+| **Identity** | JWT authentication, User profiles, Vehicle management |
+| **Station** | Station management, Connector status, Location & specifications |
+| **Session** | Charging sessions, Real-time monitoring, Reservations (WebSocket) |
+| **Billing** | Payment processing, Invoices, Subscription plans |
+| **Staff** | Employee operations, Admin reports, Maintenance tracking |
 
-### Building Blocks (Khối xây dựng)
-- **Shared.Kernel**: Chứa các thành phần domain chung như (Entity, ValueObject, Result patterns).
-- **Shared.Messaging**: Chứa các domain event và hợp đồng (contract) để giao tiếp giữa các service.
+## Yêu cầu & Cài đặt
 
-### Microservices
-
-#### 1. Identity Service (`identity.api`)
-**Trách nhiệm:**
-- Xác thực và phân quyền người dùng.
-- Quản lý thông tin cá nhân (profile) của người dùng.
-- Đăng ký và quản lý phương tiện (xe).
-- Tạo và xác thực JWT token.
-
-#### 2. Station Service (`station.api`)
-**Trách nhiệm:**
-- Quản lý trạm sạc.
-- Theo dõi trạng thái của các cổng sạc (connector).
-- Quản lý vị trí và thông số kỹ thuật của trạm.
-- Các nghiệp vụ quản trị trạm.
-
-#### 3. Session Service (`session.api`)
-**Trách nhiệm:**
-- Quản lý vòng đời của một phiên sạc.
-- Giám sát phiên sạc theo thời gian thực.
-- Hệ thống đặt chỗ trước.
-- Sử dụng WebSocket để cập nhật trạng thái trực tiếp.
-
-#### 4. Billing Service (`billing.api`)
-**Trách nhiệm:**
-- Tạo và quản lý hóa đơn.
-- Xử lý thanh toán.
-- Quản lý các gói dịch vụ (subscription).
-- Lịch sử thanh toán của người dùng.
-
-#### 5. Staff Service (`staff.api`)
-**Trách nhiệm:**
-- Các nghiệp vụ dành cho nhân viên.
-- Quản lý phiên sạc từ góc độ quản trị.
-- Báo cáo vận hành cho nhân viên.
-
-#### 6. Reporting Service (`reporting.api`)
-**Trách nhiệm:**
-- Phân tích kinh doanh và nghiệp vụ (BI & Analytics).
-- Thống kê và insight về việc sử dụng.
-- Đưa ra các đề xuất (recommendation).
-- Tổng hợp dữ liệu từ các service khác.
-
-## Bắt đầu
-
-### Yêu cầu
+**Prerequisites:**
 - .NET 8.0 SDK
-- Docker & Docker Compose
-- SQL Server (hoặc PostgreSQL)
-- Redis (dùng cho caching và messaging)
+- Docker & Docker Compose  
+- SQL Server/PostgreSQL
+- Redis
 
-### Chạy ứng dụng
+**Quick Start:**
+```bash
+# Clone & navigate
+git clone <repository-url>
+cd EVChargingStation.BE
 
-1. **Clone repository**
-   ```bash
-   git clone <repository-url>
-   cd EVChargingStation.BE
-   ```
+# Run all services
+docker-compose up -d
 
-2. **Chạy bằng Docker Compose**
-   ```bash
-   docker-compose up -d
-   ```
+# Development mode (run dependencies first)
+docker-compose up -d sqlserver redis
+dotnet run --project gateway.ocelot
+```
 
-3. **Chạy riêng lẻ từng service (Môi trường Development)**
-   ```bash
-   # Chạy các dependencies trước
-   docker-compose up -d sqlserver redis
-   
-   # Chạy từng service
-   dotnet run --project services/identity.api
-   dotnet run --project services/station.api
-   # ... các services khác
-   
-   # Chạy API Gateway
-   dotnet run --project gateway.ocelot
-   ```
+## Kiến trúc kỹ thuật
 
-## Giao tiếp giữa các Service
+### Communication Patterns
+- **External**: Client → Ocelot Gateway → Services
+- **Internal**: HTTP calls (sync) + Message Queue (async)  
+- **Real-time**: SignalR for session monitoring
 
-- **API Gateway**: Tất cả request từ bên ngoài đều đi qua Ocelot gateway.
-- **Giao tiếp nội bộ**: Dùng HTTP call cho các tác vụ đồng bộ (synchronous).
-- **Giao tiếp hướng sự kiện (Event-driven)**: Dùng Message Queue cho các tác vụ bất đồng bộ (asynchronous).
-- **Cập nhật thời gian thực**: Dùng SignalR để giám sát phiên sạc trực tiếp.
+### Database Strategy (Database-per-Service)
+- **Identity**: Users, vehicles, authentication data
+- **Station**: Stations, connectors, locations
+- **Session**: Charging sessions, reservations
+- **Billing**: Invoices, payments, subscriptions
+- **Staff**: Employee operations, maintenance logs
 
-## Chiến lược Database
-
-Mỗi service có database riêng theo mô hình database-per-service:
-- **Identity DB**: Lưu tài khoản, phương tiện, dữ liệu xác thực.
-- **Station DB**: Lưu thông tin trạm, cổng sạc, vị trí.
-- **Session DB**: Lưu các phiên sạc, lịch sử và đặt chỗ.
-- **Billing DB**: Lưu hóa đơn, thanh toán, gói dịch vụ.
-- **Staff DB**: Lưu các nghiệp vụ của nhân viên, lịch sử bảo trì.
-- **Reporting DB**: Lưu dữ liệu đã được tổng hợp, phân tích.
-
-## Bảo mật
-
-- Xác thực bằng JWT.
-- API Gateway xử lý xác thực/phân quyền.
-- Giao tiếp giữa các service được bảo mật.
-- Phân quyền dựa trên vai trò (RBAC).
-
-## Khả năng mở rộng
-
-- Các service có thể được scale độc lập.
-- Cân bằng tải (Load balancing) qua API Gateway.
-- Có khả năng dùng Database sharding.
-- Dùng Redis để caching.
-- Kiến trúc hướng sự kiện giúp giảm sự phụ thuộc.
-
-## Development
-
-Mỗi service có thể được deploy độc lập và tuân thủ:
-- Nguyên tắc Clean Architecture.
-- Áp dụng mô hình CQRS ở những nơi phù hợp.
-- Thiết kế hướng miền (Domain-driven design).
-- Có unit test và integration test đầy đủ.
+### Security & Scalability
+- **Auth**: JWT tokens, RBAC authorization via Gateway
+- **Scale**: Independent service scaling, load balancing, Redis caching
+- **Architecture**: Clean Architecture, DDD, CQRS patterns
