@@ -1,5 +1,8 @@
-﻿namespace Shared.Kernel.Utils;
+namespace Shared.Kernel.Utils;
 
+/// <summary>
+/// Represents the result of an API operation that does not return a value.
+/// </summary>
 public class ApiResult
 {
     public bool IsSuccess { get; set; }
@@ -36,6 +39,10 @@ public class ApiResult
     }
 }
 
+/// <summary>
+/// Represents the result of an API operation that returns a value.
+/// </summary>
+/// <typeparam name="T">The type of the value returned by the operation.</typeparam>
 public class ApiResult<T>
 {
     public bool IsSuccess { get; set; }
@@ -80,12 +87,19 @@ public class ApiResult<T>
     }
 }
 
+/// <summary>
+/// Represents the content of a successful response without data.
+/// </summary>
 public class ResponseContent
 {
     public string Code { get; set; }
     public string Message { get; set; }
 }
 
+/// <summary>
+/// Represents the content of a successful response with data.
+/// </summary>
+/// <typeparam name="T">The type of the data.</typeparam>
 public class ResponseDataContent<T>
 {
     public string Code { get; set; }
@@ -93,6 +107,9 @@ public class ResponseDataContent<T>
     public T Data { get; set; }
 }
 
+/// <summary>
+/// Represents the content of an error response.
+/// </summary>
 public class ErrorContent
 {
     public string Code { get; set; }
