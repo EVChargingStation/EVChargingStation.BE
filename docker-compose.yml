@@ -16,7 +16,7 @@ services:
       - JWT__Issuer=EVChargingStation_Issuer
       - JWT__Audience=EVChargingStation_Audience
     ports:
-      - "5000:5000"
+      - "5001:5000"
 
   evchargingstation.database:
     image: postgres:latest
