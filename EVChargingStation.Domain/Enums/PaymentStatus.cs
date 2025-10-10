@@ -1,10 +1,9 @@
-namespace EVChargingStation.Domain.Enums
+namespace EVChargingStation.Domain.Enums;
+
+public enum PaymentStatus
 {
-    public enum PaymentStatus
-    {
-        Pending = 0,
-        Completed = 1,
-        Failed = 2,
-        Refunded = 3
-    }
+    Pending = 0,
+    Completed = 1,
+    Failed = 2,
+    Refunded = 3
 }

@@ -1,36 +1,35 @@
-﻿using EVChargingStation.Domain.Entities;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using EVChargingStation.Domain.Entities;
 
-namespace EVChargingStation.Infrastructure.Interfaces
+namespace EVChargingStation.Infrastructure.Interfaces;
+
+public interface IGenericRepository<TEntity> where TEntity : BaseEntity
 {
-    public interface IGenericRepository<TEntity> where TEntity : BaseEntity
-    {
-        public Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
-            params Expression<Func<TEntity, object>>[] includes);
+    public Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
+        params Expression<Func<TEntity, object>>[] includes);
 
-        Task<TEntity?> GetByIdAsync(Guid id, params Expression<Func<TEntity, object>>[] includes);
+    Task<TEntity?> GetByIdAsync(Guid id, params Expression<Func<TEntity, object>>[] includes);
 
-        Task<TEntity> AddAsync(TEntity entity);
+    Task<TEntity> AddAsync(TEntity entity);
 
-        Task<bool> UpdateRange(List<TEntity> entities);
+    Task<bool> UpdateRange(List<TEntity> entities);
 
-        Task<bool> Update(TEntity entity);
+    Task<bool> Update(TEntity entity);
 
-        Task<bool> SoftRemoveRangeById(List<Guid> entitiesId);
+    Task<bool> SoftRemoveRangeById(List<Guid> entitiesId);
 
-        Task<bool> SoftRemoveRange(List<TEntity> entities);
+    Task<bool> SoftRemoveRange(List<TEntity> entities);
 
-        Task<bool> SoftRemove(TEntity entity);
+    Task<bool> SoftRemove(TEntity entity);
 
-        Task AddRangeAsync(List<TEntity> entities);
+    Task AddRangeAsync(List<TEntity> entities);
 
-        IQueryable<TEntity> GetQueryable();
+    IQueryable<TEntity> GetQueryable();
 
-        Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate = null,
-            params Expression<Func<TEntity, object>>[] includes);
+    Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate = null,
+        params Expression<Func<TEntity, object>>[] includes);
 
-        Task<bool> HardRemoveRange(List<TEntity> entities);
+    Task<bool> HardRemoveRange(List<TEntity> entities);
 
-        Task<bool> HardRemove(Expression<Func<TEntity, bool>> predicate);
-    }
+    Task<bool> HardRemove(Expression<Func<TEntity, bool>> predicate);
 }

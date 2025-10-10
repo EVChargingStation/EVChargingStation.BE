@@ -1,9 +1,8 @@
-namespace EVChargingStation.Domain.Enums
+namespace EVChargingStation.Domain.Enums;
+
+public enum PlanType
 {
-    public enum PlanType
-    {
-        Prepaid = 0,
-        Postpaid = 1,
-        VIP = 2
-    }
+    Prepaid = 0,
+    Postpaid = 1,
+    VIP = 2
 }

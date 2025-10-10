@@ -1,8 +1,7 @@
-﻿namespace EVChargingStation.Domain.Enums
+﻿namespace EVChargingStation.Domain.Enums;
+
+public enum PriceType
 {
-    public enum PriceType
-    {
-        PrePaid = 0,
-        Free = 1
-    }
+    PrePaid = 0,
+    Free = 1
 }

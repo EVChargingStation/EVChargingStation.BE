@@ -1,35 +1,31 @@
-﻿using EVChargingStation.Domain.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using EVChargingStation.Domain.Enums;
 
-namespace EVChargingStation.Domain.Entities
+namespace EVChargingStation.Domain.Entities;
+
+public class Reservation : BaseEntity
 {
-    public class Reservation : BaseEntity
-    {
-        [Required]
-        public Guid UserId { get; set; }
-        
-        [Required]
-        public Guid StationId { get; set; }
-        
-        public Guid? ConnectorId { get; set; }
-        
-        public ConnectorType? PreferredConnectorType { get; set; }
-        
-        public decimal? MinPowerKw { get; set; }
-        
-        public PriceType PriceType { get; set; } = PriceType.Free;
-        
-        [Required]
-        public DateTime StartTime { get; set; }
-        
-        public DateTime? EndTime { get; set; }
-        
-        public ReservationStatus Status { get; set; } = ReservationStatus.Pending;
+    [Required] public Guid UserId { get; set; }
 
-        // Navigation properties
-        public User User { get; set; } = null!;
-        public Station Station { get; set; } = null!;
-        public Connector? Connector { get; set; }
-        public Session? Session { get; set; }
-    }
+    [Required] public Guid StationId { get; set; }
+
+    public Guid? ConnectorId { get; set; }
+
+    public ConnectorType? PreferredConnectorType { get; set; }
+
+    public decimal? MinPowerKw { get; set; }
+
+    public PriceType PriceType { get; set; } = PriceType.Free;
+
+    [Required] public DateTime StartTime { get; set; }
+
+    public DateTime? EndTime { get; set; }
+
+    public ReservationStatus Status { get; set; } = ReservationStatus.Pending;
+
+    // Navigation properties
+    public User User { get; set; } = null!;
+    public Station Station { get; set; } = null!;
+    public Connector? Connector { get; set; }
+    public Session? Session { get; set; }
 }

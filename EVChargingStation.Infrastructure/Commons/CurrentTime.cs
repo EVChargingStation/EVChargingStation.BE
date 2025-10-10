@@ -1,12 +1,11 @@
 ﻿using EVChargingStation.Infrastructure.Interfaces;
 
-namespace EVChargingStation.Infrastructure.Commons
+namespace EVChargingStation.Infrastructure.Commons;
+
+public class CurrentTime : ICurrentTime
 {
-    public class CurrentTime : ICurrentTime
+    public DateTime GetCurrentTime()
     {
-        public DateTime GetCurrentTime()
-        {
-            return DateTime.UtcNow; // Đảm bảo trả về thời gian UTC
-        }
+        return DateTime.UtcNow; // Đảm bảo trả về thời gian UTC
     }
 }

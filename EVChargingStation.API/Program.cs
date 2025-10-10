@@ -1,9 +1,8 @@
-using EVChargingStation.API.Architecture;
-using EVChargingStation.Application.Interfaces;
-using SwaggerThemes;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using EVChargingStation.API.Architecture;
+using SwaggerThemes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +16,7 @@ builder.Configuration
     .AddEnvironmentVariables();
 
 #region Stripe Configuration
+
 //// Configure Stripe settings
 //builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
@@ -52,6 +52,7 @@ builder.Configuration
 //{
 //    Console.WriteLine("CRITICAL: Stripe Secret Key is missing! Payment processing will fail.");
 //}
+
 #endregion
 
 builder.Services.AddCors(options =>
@@ -60,13 +61,13 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins(
-                "https://evchargingstation.ae-tao-fullstack-api.site",  // Production
-                "http://localhost:3000",                                // Local dev
-                "http://localhost:3001"                                 // Local dev
-            )
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
+                    "https://evchargingstation.ae-tao-fullstack-api.site", // Production
+                    "http://localhost:3000", // Local dev
+                    "http://localhost:3001" // Local dev
+                )
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
         });
 });
 
@@ -92,10 +93,12 @@ builder.Services.AddSession(options =>
 });
 
 #region SignalR Configuration
+
 //builder.Services.AddSignalR(options =>
 //{
 //    options.EnableDetailedErrors = true;
 //});
+
 #endregion
 
 var app = builder.Build();

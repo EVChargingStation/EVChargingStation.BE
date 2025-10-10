@@ -1,10 +1,9 @@
-namespace EVChargingStation.Domain.Enums
+namespace EVChargingStation.Domain.Enums;
+
+public enum ConnectorStatus
 {
-    public enum ConnectorStatus
-    {
-        Free = 0,
-        Occupied = 1,
-        Maintenance = 2,
-        Offline = 3
-    }
+    Free = 0,
+    Occupied = 1,
+    Maintenance = 2,
+    Offline = 3
 }

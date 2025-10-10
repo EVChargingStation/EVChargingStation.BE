@@ -1,27 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Minio" Version="6.0.4" />
-		<PackageReference Include="QRCoder" Version="1.6.0" />
-		<PackageReference Include="Resend" Version="0.1.1" />
-		<PackageReference Include="Stripe.net" Version="48.2.0" />
-		<PackageReference Include="System.Drawing.Common" Version="8.0.17" />
-		<PackageReference Include="ZXing.Net" Version="0.16.10" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Minio" Version="6.0.4"/>
+        <PackageReference Include="QRCoder" Version="1.6.0"/>
+        <PackageReference Include="Resend" Version="0.1.1"/>
+        <PackageReference Include="Stripe.net" Version="48.2.0"/>
+        <PackageReference Include="System.Drawing.Common" Version="8.0.17"/>
+        <PackageReference Include="ZXing.Net" Version="0.16.10"/>
+    </ItemGroup>
 
-	<ItemGroup>
-    <ProjectReference Include="..\EVChargingStation.Infrastructure\EVChargingStation.Infrastructure.csproj" />
-  </ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Interfaces\ThirdParties\" />
-	  <Folder Include="Services\ThirdParties\" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\EVChargingStation.Infrastructure\EVChargingStation.Infrastructure.csproj"/>
+    </ItemGroup>
 
 </Project>

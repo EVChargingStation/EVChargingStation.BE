@@ -1,7 +1,6 @@
-﻿namespace EVChargingStation.Infrastructure.Interfaces
+﻿namespace EVChargingStation.Infrastructure.Interfaces;
+
+public interface ICurrentTime
 {
-    public interface ICurrentTime
-    {
-        public DateTime GetCurrentTime();
-    }
+    public DateTime GetCurrentTime();
 }

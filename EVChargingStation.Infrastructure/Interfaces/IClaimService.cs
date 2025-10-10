@@ -1,9 +1,8 @@
-﻿namespace EVChargingStation.Infrastructure.Interfaces
-{
-    public interface IClaimsService
-    {
-        public Guid GetCurrentUserId { get; }
+﻿namespace EVChargingStation.Infrastructure.Interfaces;
 
-        public string? IpAddress { get; }
-    }
+public interface IClaimsService
+{
+    public Guid GetCurrentUserId { get; }
+
+    public string? IpAddress { get; }
 }

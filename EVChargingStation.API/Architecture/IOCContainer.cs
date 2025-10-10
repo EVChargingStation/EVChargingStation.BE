@@ -80,7 +80,7 @@ public static class IocContainer
             {
                 Title = "EVChargingStationAPI",
                 Version = "v1",
-                Description = "API for EV Charging Station Management",
+                Description = "API for EV Charging Station Management"
             });
             var jwtSecurityScheme = new OpenApiSecurityScheme
             {
@@ -140,7 +140,7 @@ public static class IocContainer
                 x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,   // Bật kiểm tra Issuer
+                    ValidateIssuer = true, // Bật kiểm tra Issuer
                     ValidateAudience = true, // Bật kiểm tra Audience
                     ValidateLifetime = true,
                     ValidIssuer = configuration["JWT:Issuer"],

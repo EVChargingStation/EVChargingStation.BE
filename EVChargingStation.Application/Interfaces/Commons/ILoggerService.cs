@@ -1,13 +1,12 @@
-﻿namespace EVChargingStation.Application.Interfaces.Commons
+﻿namespace EVChargingStation.Application.Interfaces.Commons;
+
+public interface ILoggerService
 {
-    public interface ILoggerService
-    {
-        void Success(string msg);
+    void Success(string msg);
 
-        void Error(string msg);
+    void Error(string msg);
 
-        void Warn(string msg);
+    void Warn(string msg);
 
-        void Info(string msg);
-    }
+    void Info(string msg);
 }
