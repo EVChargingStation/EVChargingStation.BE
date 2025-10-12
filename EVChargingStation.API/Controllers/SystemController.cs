@@ -181,11 +181,12 @@ public class SystemController : ControllerBase
                 FirstName = "Admin",
                 LastName = "User",
                 Email = "admin@evcharging.com",
-                PasswordHash = new PasswordHasher().HashPassword("Admin@123"),
+                PasswordHash =
+                    "AQAAAAIAAYagAAAAEF+6nDTnmVcyr9it4NRnUVKeQbgHBUO/9kW8JfNt+8//tXYQmYZvCZH/VT1G1DCNlQ==", // Admin@123
                 Phone = "0123456789",
                 Status = UserStatus.Active,
                 Role = RoleType.Admin,
-                DateOfBirth = new DateTime(1990, 1, 1),
+                DateOfBirth = new DateTime(1990, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                 Gender = Gender.Male,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
@@ -197,11 +198,12 @@ public class SystemController : ControllerBase
                 FirstName = "Staff",
                 LastName = "User",
                 Email = "staff@evcharging.com",
-                PasswordHash = new PasswordHasher().HashPassword("Staff@123"),
+                PasswordHash =
+                    "AQAAAAIAAYagAAAAEOZBXQmLt+MH5heLf9JmCA0VnPZJEuKmVQq5XVsGYOjGv/nQiZNaO7Bez1G9NNWKNA==", // Staff@123
                 Phone = "0987654321",
                 Status = UserStatus.Active,
                 Role = RoleType.Staff,
-                DateOfBirth = new DateTime(1995, 5, 15),
+                DateOfBirth = new DateTime(1995, 5, 15, 0, 0, 0, DateTimeKind.Utc),
                 Gender = Gender.Male,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
@@ -217,7 +219,7 @@ public class SystemController : ControllerBase
                 Phone = "0912345678",
                 Status = UserStatus.Active,
                 Role = RoleType.Driver,
-                DateOfBirth = new DateTime(1998, 8, 20),
+                DateOfBirth = new DateTime(1998, 8, 20, 0, 0, 0, DateTimeKind.Utc),
                 Gender = Gender.Female,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow

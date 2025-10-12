@@ -1,5 +1,7 @@
 ﻿using System.Text;
+using EVChargingStation.Application.Interfaces;
 using EVChargingStation.Application.Interfaces.Commons;
+using EVChargingStation.Application.Services;
 using EVChargingStation.Application.Services.Commons;
 using EVChargingStation.Domain;
 using EVChargingStation.Infrastructure;
@@ -64,6 +66,7 @@ public static class IocContainer
         services.AddScoped<ICurrentTime, CurrentTime>();
         services.AddScoped<IClaimsService, ClaimsService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IAuthService, AuthService>();
 
         services.AddHttpContextAccessor();
 
