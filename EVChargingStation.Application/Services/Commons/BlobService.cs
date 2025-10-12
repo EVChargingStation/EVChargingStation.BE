@@ -1,10 +1,9 @@
-﻿using EVChargingStation.Application.Interfaces;
-using EVChargingStation.Application.Interfaces.Commons;
+﻿using EVChargingStation.Application.Interfaces.Commons;
 using Minio;
 using Minio.DataModel.Args;
 using Minio.Exceptions;
 
-namespace EVChargingStation.Application.Services;
+namespace EVChargingStation.Application.Services.Commons;
 
 public class BlobService : IBlobService
 {

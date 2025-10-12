@@ -1,4 +1,4 @@
-﻿namespace BlindTreasure.Domain.DTOs.AuthenDTOs;
+﻿namespace EVChargingStation.Domain.DTOs.AuthenDTOs;
 
 public class UpdateProfileDto
 {

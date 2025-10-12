@@ -1,4 +1,4 @@
-﻿namespace EVChargingStation.Application.Interfaces;
+﻿namespace EVChargingStation.Application.Interfaces.Commons;
 
 public interface IBlobService
 {

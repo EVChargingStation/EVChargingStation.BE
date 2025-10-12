@@ -1,6 +1,6 @@
 ﻿using EVChargingStation.Domain.Enums;
 
-namespace BlindTreasure.Domain.DTOs.UserDTOs;
+namespace EVChargingStation.Domain.DTOs.UserDTOs;
 
 public class UserDto
 {

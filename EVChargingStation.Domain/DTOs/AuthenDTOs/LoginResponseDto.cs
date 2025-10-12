@@ -1,6 +1,6 @@
-﻿using BlindTreasure.Domain.DTOs.UserDTOs;
+﻿using EVChargingStation.Domain.DTOs.UserDTOs;
 
-namespace BlindTreasure.Domain.DTOs.AuthenDTOs;
+namespace EVChargingStation.Domain.DTOs.AuthenDTOs;
 
 public class LoginResponseDto
 {

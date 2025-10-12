@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
 
-namespace BlindTreasure.Domain.DTOs.AuthenDTOs;
+namespace EVChargingStation.Domain.DTOs.AuthenDTOs;
 
 public class SellerRegistrationDto
 {
