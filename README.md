@@ -26,23 +26,48 @@ API: `https://localhost:5001` | Swagger: `https://localhost:5001/swagger`
 
 ## MVP Features (2-Person Team)
 
-### Phase 1 - Core Functionality
-- **User Management**: Basic registration/login, profile management
-- **Station Management**: Basic station info, location, status
-- **Charging Sessions**: Start/stop charging, basic session tracking
-- **Simple Payment**: Fixed pricing, basic payment recording
+### Core Features to Implement
+
+#### For EV Drivers
+- **Basic Account Management**
+  - Registration & login (email only)
+  - Simple profile management (personal info, vehicle type)
+
+- **Station Interaction**
+  - View charging stations (list view instead of map)
+  - View station details (location, status, connector types)
+  - Start/stop charging sessions via QR code
+
+- **Payment (Simplified)**
+  - Basic payment tracking (kWh-based only)
+  - View transaction history
+  - Simple electronic receipt (no complex invoicing)
+
+#### For Admin
+- **Station Management**
+  - Add/edit/remove stations and charging points
+  - View station status (online/offline)
+
+- **User Management**
+  - Basic user CRUD operations
+  - View user list
+
+- **Simple Reporting**
+  - Basic revenue report by station
+  - Usage frequency report
 
 ### Simplified Scope
-- **Three User Roles**: 
+- **Two User Roles**: 
   - **EV Driver**: End users who charge their electric vehicles
-  - **Station Staff**: Personnel who manage charging stations
-  - **Admin**: System administrators with full access
-- **No Advanced Features**: 
-  - No reservations system
-  - No subscription plans  
-  - No AI recommendations
-  - No detailed reporting
-  - No real-time monitoring
+  - **Admin**: System administrators with full access (includes station staff functionality)
+- **Features to Exclude**:
+  - Map-based station view (use list view instead)
+  - Time-based pricing (use kWh pricing only)
+  - Payment gateway integration (simulate only)
+  - Remote activation/deactivation of charging points
+  - Monthly cost reporting
+  - Charging habit analytics
+  - Business customer accounts (focus on individual users)
 - **Basic Entities Only**: User, Station, Connector, Session, Payment
 
 ## Development Plan

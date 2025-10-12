@@ -38,11 +38,35 @@ The API will be available at `https://localhost:5001`, with Swagger UI at `https
 **1. Focus on the MVP Scope:**
 Your primary focus is the MVP defined in `README.md`. This is a 2-person project with a simplified scope.
 
-**MVP Features:**
-- **User Management**: Basic registration/login via email, profile management.
-- **Station Management**: Basic station info (location, status).
-- **Charging Sessions**: Start/stop charging, basic session tracking.
-- **Simple Payment**: Fixed pricing and basic payment recording (no real gateways).
+**Core Features to Implement:**
+
+**For EV Drivers:**
+- **Basic Account Management**
+  - Registration & login (email only)
+  - Simple profile management (personal info, vehicle type)
+
+- **Station Interaction**
+  - View charging stations (list view instead of map)
+  - View station details (location, status, connector types)
+  - Start/stop charging sessions via QR code
+
+- **Payment (Simplified)**
+  - Basic payment tracking (kWh-based only)
+  - View transaction history
+  - Simple electronic receipt (no complex invoicing)
+
+**For Admin:**
+- **Station Management**
+  - Add/edit/remove stations and charging points
+  - View station status (online/offline)
+
+- **User Management**
+  - Basic user CRUD operations
+  - View user list
+
+- **Simple Reporting**
+  - Basic revenue report by station
+  - Usage frequency report
 
 **Basic Entities to Implement:**
 - `User`
@@ -78,12 +102,19 @@ Your primary focus is the MVP defined in `README.md`. This is a 2-person project
 - For successful responses, use `ApiResult<T>.Success(data)`.
 - For errors, use `ApiResult<T>.Fail(error)`.
 
+## User Roles
+The system has two distinct user roles:
+- **EV Driver**: End users who charge their electric vehicles
+- **Admin**: System administrators with full access (includes station staff functionality)
+
 ## Out of Scope (Do Not Implement)
-- **User Roles**: Three roles are in scope - `EV Driver`, `Station Staff`, and `Admin`.
-- **Advanced Features**: 
-  - No reservation system.
-  - No subscription plans or different pricing models.
-  - No AI recommendations or detailed reporting.
-  - No real-time station monitoring from the client-side.
-- **Advanced Payments**: Do not integrate external payment gateways (e-wallets, banking). Assume a simple, recorded payment model.
-- **Social Logins**: Do not implement login/registration via social media accounts.
+- **Advanced Subscription Features**: 
+  - No complex subscription plans or different pricing models
+- **AI Features**: 
+  - No AI recommendations for demand forecasting
+- **Real-time Monitoring**:
+  - No real-time station monitoring from the client-side
+- **Advanced Payment Integration**:
+  - Simulate payment gateway integration only, no actual third-party payment processing
+- **Social Logins**:
+  - No login/registration via social media accounts
