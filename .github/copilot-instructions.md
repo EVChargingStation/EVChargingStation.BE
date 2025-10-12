@@ -79,7 +79,7 @@ Your primary focus is the MVP defined in `README.md`. This is a 2-person project
 - For errors, use `ApiResult<T>.Fail(error)`.
 
 ## Out of Scope (Do Not Implement)
-- **Multiple User Roles**: Only the `EV Driver` role is in scope. No `Admin` or `CS Staff` roles.
+- **User Roles**: Three roles are in scope - `EV Driver`, `Station Staff`, and `Admin`.
 - **Advanced Features**: 
   - No reservation system.
   - No subscription plans or different pricing models.

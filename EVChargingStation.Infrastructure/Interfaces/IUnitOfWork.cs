@@ -1,8 +1,10 @@
-﻿namespace EVChargingStation.Infrastructure.Interfaces;
+﻿using EVChargingStation.Domain.Entities;
+
+namespace EVChargingStation.Infrastructure.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {
-    //IGenericRepository<OtpStorage> OtpStorages { get; }
+    IGenericRepository<User> Users { get; }
     //IGenericRepository<Movie> Movies { get; }
     //IGenericRepository<ShowTime> ShowTimes { get; }
     //IGenericRepository<Promotion> Promotions { get; }

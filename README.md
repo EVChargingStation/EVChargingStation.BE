@@ -33,7 +33,10 @@ API: `https://localhost:5001` | Swagger: `https://localhost:5001/swagger`
 - **Simple Payment**: Fixed pricing, basic payment recording
 
 ### Simplified Scope
-- **Single Role**: EV Driver only (no staff/admin roles)
+- **Three User Roles**: 
+  - **EV Driver**: End users who charge their electric vehicles
+  - **Station Staff**: Personnel who manage charging stations
+  - **Admin**: System administrators with full access
 - **No Advanced Features**: 
   - No reservations system
   - No subscription plans  
