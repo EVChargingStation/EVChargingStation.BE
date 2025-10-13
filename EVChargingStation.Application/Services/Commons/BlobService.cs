@@ -1,197 +1,294 @@
-﻿using EVChargingStation.Application.Interfaces.Commons;
+using System.Text.RegularExpressions;
+using EVChargingStation.Application.Interfaces.Commons;
+using EVChargingStation.Application.Utils;
 using Minio;
 using Minio.DataModel.Args;
 using Minio.Exceptions;
 
 namespace EVChargingStation.Application.Services.Commons;
 
+/// <summary>
+///     NOTE: This service can be reused in other projects.
+///     This service is used to interact with a MinIO server.
+///     It requires the following environment variables to be set:
+///     - MINIO_ENDPOINT (e.g., "localhost:9000" or "minio.example.com"). Port 9000 is the MinIO API, Port 9001 is the
+///     MinIO UI.
+///     - MINIO_ACCESS_KEY
+///     - MINIO_SECRET_KEY
+///     - MINIO_USE_SSL (optional, defaults to auto-detection based on endpoint)
+/// </summary>
 public class BlobService : IBlobService
 {
-    private readonly string _bucketName = "movietheater-bucket";
-    private readonly ILoggerService _loggerService;
+    private readonly string _bucketName = "uniseapshop-bucket";
+    private readonly ILoggerService _logger;
     private readonly IMinioClient _minioClient;
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="BlobService" /> class.
+    ///     Configures the MinIO client using environment variables.
+    /// </summary>
+    /// <param name="logger">The logger service for logging information and errors.</param>
+    /// <exception cref="Exception">Throws if the MinIO client fails to initialize.</exception>
     public BlobService(ILoggerService logger)
     {
-        _loggerService = logger;
+        _logger = logger;
 
-        // Get key từ docker-compose
-        var endpoint = Environment.GetEnvironmentVariable("MINIO_ENDPOINT") ?? "103.211.201.162:9000";
+        var endpointRaw = Environment.GetEnvironmentVariable("MINIO_ENDPOINT");
         var accessKey = Environment.GetEnvironmentVariable("MINIO_ACCESS_KEY");
         var secretKey = Environment.GetEnvironmentVariable("MINIO_SECRET_KEY");
+        var useSslEnv = Environment.GetEnvironmentVariable("MINIO_USE_SSL");
 
-        _loggerService.Info("Initializing BlobService...");
-        _loggerService.Info($"Connecting to MinIO at: {endpoint}");
+        _logger.Info("Initializing BlobService...");
+        _logger.Info($"Raw MINIO_ENDPOINT: {endpointRaw}");
+
+        // Normalize endpoint and auto-detect SSL
+        // Default to localhost:9000, which is the default MinIO API port.
+        // The MinIO UI is typically on port 9001.
+        var endpoint = endpointRaw?.Trim() ?? "localhost:9000";
+        var useSsl = false;
+
+        if (bool.TryParse(useSslEnv, out var parsedSsl))
+        {
+            useSsl = parsedSsl;
+        }
+        else
+        {
+            // Auto-detect SSL: use SSL for domain names, not for IP addresses or localhost
+            var isIpAddress = Regex.IsMatch(
+                endpoint.Split(':')[0],
+                @"^\d{1,3}(\.\d{1,3}){3}$"
+            );
+            var isLocalhost = endpoint.StartsWith("localhost", StringComparison.OrdinalIgnoreCase);
+
+            useSsl = !isIpAddress && !isLocalhost;
+        }
+
+        if (endpoint.StartsWith("http://", StringComparison.OrdinalIgnoreCase))
+        {
+            endpoint = endpoint.Substring(7);
+            useSsl = false;
+        }
+        else if (endpoint.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            endpoint = endpoint.Substring(8);
+            useSsl = true;
+        }
+
+        _logger.Info($"Normalized endpoint: {endpoint}");
+        _logger.Info($"Using SSL: {useSsl}");
 
         try
         {
-            // Kết nối MinIO không dùng SSL (vì đang dùng IP:port hoặc HTTP)
             _minioClient = new MinioClient()
                 .WithEndpoint(endpoint)
                 .WithCredentials(accessKey, secretKey)
-                .WithSSL(false)
+                .WithSSL(useSsl)
                 .Build();
 
-            _loggerService.Success("MinIO client initialized successfully.");
+            _logger.Success("MinIO client initialized successfully.");
         }
         catch (Exception ex)
         {
-            _loggerService.Error($"Failed to initialize MinIO client: {ex.Message}");
+            _logger.Error($"Failed to initialize MinIO client: {ex.Message}");
             throw;
         }
     }
 
     /// <summary>
-    ///     Check xem bucket đã tồn tại trên Minio chưa (creates nếu bucket ko tồn tai ).
+    ///     Uploads a file to the MinIO bucket.
+    ///     If the bucket does not exist, it will be created automatically.
     /// </summary>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    public async Task EnsureBucketExistsAsync(CancellationToken cancellationToken = default)
+    /// <param name="fileName">The name of the file (object) to be created in the bucket.</param>
+    /// <param name="fileStream">The stream containing the file data.</param>
+    /// <example>
+    ///     <code>
+    /// await _blobService.UploadFileAsync("my-image.jpg", fileStream);
+    /// </code>
+    /// </example>
+    public async Task UploadFileAsync(string fileName, Stream fileStream)
     {
+        _logger.Info($"Starting file upload: {fileName}");
+
         try
         {
-            var exists =
-                await _minioClient.BucketExistsAsync(new BucketExistsArgs().WithBucket(_bucketName), cancellationToken);
+            var beArgs = new BucketExistsArgs().WithBucket(_bucketName);
+            var found = await _minioClient.BucketExistsAsync(beArgs);
+            if (!found)
+            {
+                _logger.Warn($"Bucket '{_bucketName}' not found. Creating a new one...");
+                var mbArgs = new MakeBucketArgs().WithBucket(_bucketName);
+                await _minioClient.MakeBucketAsync(mbArgs);
+                _logger.Success($"Bucket '{_bucketName}' created successfully.");
+            }
 
-            if (!exists)
-            {
-                _loggerService.Warn($"Bucket '{_bucketName}' not found. Creating...");
-                await _minioClient.MakeBucketAsync(
-                    new MakeBucketArgs().WithBucket(_bucketName),
-                    cancellationToken);
-                _loggerService.Success($"Bucket '{_bucketName}' created.");
-            }
-            else
-            {
-                _loggerService.Info($"Bucket '{_bucketName}' already exists.");
-            }
+            var contentType = GetContentType(fileName);
+
+            var putObjectArgs = new PutObjectArgs()
+                .WithBucket(_bucketName)
+                .WithObject(fileName)
+                .WithStreamData(fileStream)
+                .WithObjectSize(fileStream.Length)
+                .WithContentType(contentType);
+
+            await _minioClient.PutObjectAsync(putObjectArgs);
+            _logger.Success($"File '{fileName}' uploaded successfully.");
         }
-        catch (MinioException mex)
+        catch (MinioException minioEx)
         {
-            _loggerService.Error($"MinIO error in EnsureBucketExists: {mex.Message}");
-            throw;
-        }
-        catch (OperationCanceledException)
-        {
-            _loggerService.Warn("Bucket creation cancelled.");
+            _logger.Error($"MinIO Error during upload: {minioEx.Message}");
             throw;
         }
         catch (Exception ex)
         {
-            _loggerService.Error($"Unexpected error in EnsureBucketExists: {ex.Message}");
+            _logger.Error($"Unexpected error during file upload: {ex.Message}");
             throw;
         }
     }
 
     /// <summary>
-    ///     Upload file lên MinIO bucket
+    ///     Generates a temporary, presigned URL to preview a file.
+    ///     This URL is valid for a limited time (e.g., 7 days).
     /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="fileStream"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    public async Task UploadFileAsync(string fileName, Stream fileStream, string? folder = null,
-        CancellationToken cancellationToken = default)
-    {
-        await EnsureBucketExistsAsync(cancellationToken);
-
-        var objectName = string.IsNullOrWhiteSpace(folder)
-            ? fileName
-            : $"{folder.TrimEnd('/')}/{fileName}";
-
-        var contentType = GetContentType(fileName);
-
-        var putArgs = new PutObjectArgs()
-            .WithBucket(_bucketName)
-            .WithObject(objectName)
-            .WithStreamData(fileStream)
-            .WithObjectSize(fileStream.Length)
-            .WithContentType(contentType);
-
-        _loggerService.Info($"Uploading '{objectName}' (type={contentType})...");
-        await _minioClient.PutObjectAsync(putArgs, cancellationToken);
-        _loggerService.Success($"Upload completed: {objectName}");
-    }
-
-    /// <summary>
-    ///     Tạo 1 cái preview URL cho file đã upload lên MinIO.
-    /// </summary>
-    /// <param name="fileName"></param>
-    /// <returns></returns>
-    public Task<string> GetPreviewUrlAsync(string fileName)
-    {
-        var minioHost = Environment.GetEnvironmentVariable("MINIO_HOST")
-                        ?? "https://minio.fpt-devteam.fun/";
-
-        _loggerService.Info($"Generating preview URL for: {fileName}");
-        var previewUrl = $"{minioHost}/api/v1/buckets/{_bucketName}/objects/download?"
-                         + $"preview=true&prefix={fileName}&version_id=null";
-
-        _loggerService.Info($"Preview URL: {previewUrl}");
-        return Task.FromResult(previewUrl);
-    }
-
-    /// <summary>
-    ///     Generates a presigned URL for downloading a file from MinIO.
-    /// </summary>
-    /// <param name="fileName"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    public async Task<string> GetFileUrlAsync(string fileName, CancellationToken cancellationToken = default)
+    /// <param name="fileName">The name of the file in the bucket.</param>
+    /// <returns>A string containing the presigned URL.</returns>
+    public async Task<string> GetPreviewUrlAsync(string fileName)
     {
         try
         {
-            _loggerService.Info($"Generating presigned URL for: {fileName}");
-
             var args = new PresignedGetObjectArgs()
                 .WithBucket(_bucketName)
                 .WithObject(fileName)
-                .WithExpiry(7 * 24 * 60 * 60);
+                .WithExpiry(7 * 24 * 60 * 60); // 7 days
 
-            var presignTask = _minioClient.PresignedGetObjectAsync(args);
-
-            var url = cancellationToken == default
-                ? await presignTask
-                : await presignTask.WaitAsync(cancellationToken);
-
-            // Replace both http and https with the public domain
-            var minioHost = Environment.GetEnvironmentVariable("MINIO_HOST") ?? "https://minio.fpt-devteam.fun";
-            url = url.Replace("http://103.211.201.162:9000", minioHost)
-                .Replace("https://103.211.201.162:9000", minioHost);
-
-            _loggerService.Success($"Presigned URL: {url}");
-            return url;
-        }
-        catch (OperationCanceledException)
-        {
-            _loggerService.Warn($"Presigned URL generation cancelled: {fileName}");
-            throw;
+            var previewUrl = await _minioClient.PresignedGetObjectAsync(args);
+            _logger.Success($"Preview URL generated: {previewUrl}");
+            return previewUrl;
         }
         catch (Exception ex)
         {
-            _loggerService.Error($"Error generating presigned URL: {ex.Message}");
-            return null;
+            _logger.Error($"Error generating preview URL: {ex.Message}");
+            throw;
         }
     }
 
     /// <summary>
-    ///     Check content type dựa trên file extension.
+    ///     Generates a temporary, presigned URL to access or download a file.
+    ///     This URL is valid for a limited time (e.g., 7 days).
     /// </summary>
-    /// <param name="fileName"></param>
-    /// <returns></returns>
+    /// <param name="fileName">The name of the file in the bucket.</param>
+    /// <returns>A string containing the presigned URL.</returns>
+    public async Task<string> GetFileUrlAsync(string fileName)
+    {
+        try
+        {
+            var args = new PresignedGetObjectArgs()
+                .WithBucket(_bucketName)
+                .WithObject(fileName)
+                .WithExpiry(7 * 24 * 60 * 60); // 7 days
+
+            var fileUrl = await _minioClient.PresignedGetObjectAsync(args);
+            _logger.Success($"Presigned file URL generated: {fileUrl}");
+            return fileUrl;
+        }
+        catch (Exception ex)
+        {
+            _logger.Error($"Error generating file URL: {ex.Message}");
+            throw;
+        }
+    }
+
+    /// <summary>
+    ///     Deletes a file from the MinIO bucket.
+    /// </summary>
+    /// <param name="fileName">The name of the file to delete.</param>
+    public async Task DeleteFileAsync(string fileName)
+    {
+        _logger.Info($"Deleting file: {fileName}");
+
+        try
+        {
+            var removeObjectArgs = new RemoveObjectArgs()
+                .WithBucket(_bucketName)
+                .WithObject(fileName);
+
+            await _minioClient.RemoveObjectAsync(removeObjectArgs);
+            _logger.Success($"File '{fileName}' deleted successfully.");
+        }
+        catch (MinioException minioEx)
+        {
+            _logger.Error($"MinIO Error during delete: {minioEx.Message}");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.Error($"Unexpected error during file delete: {ex.Message}");
+            throw;
+        }
+    }
+
+    /// <summary>
+    ///     Replaces an existing image with a new one. It first deletes the old image (if a URL is provided)
+    ///     and then uploads the new image, returning its preview URL.
+    /// </summary>
+    /// <param name="newImageStream">The stream of the new image to upload.</param>
+    /// <param name="originalFileName">The original file name of the new image, used to determine the file extension.</param>
+    /// <param name="oldImageUrl">The URL of the old image to delete. Can be null or empty if there is no old image.</param>
+    /// <param name="containerPrefix">
+    ///     A prefix for the file name, typically used to organize files (e.g., "avatars",
+    ///     "products").
+    /// </param>
+    /// <returns>The presigned preview URL of the newly uploaded image.</returns>
+    public async Task<string> ReplaceImageAsync(Stream newImageStream, string originalFileName, string? oldImageUrl,
+        string containerPrefix)
+    {
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(oldImageUrl))
+                try
+                {
+                    var oldFileName = Path.GetFileName(new Uri(oldImageUrl).LocalPath);
+                    var fullOldPath = $"{containerPrefix}/{oldFileName}";
+                    await DeleteFileAsync(fullOldPath);
+                    _logger.Info($"[ReplaceImageAsync] Deleted old image: {fullOldPath}");
+                }
+                catch (Exception ex)
+                {
+                    _logger.Warn($"[ReplaceImageAsync] Failed to delete old image: {ex.Message}");
+                }
+
+            var newFileName = $"{containerPrefix}/{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
+            _logger.Info($"[ReplaceImageAsync] Uploading new image: {newFileName}");
+
+            await UploadFileAsync(newFileName, newImageStream);
+
+            var previewUrl = await GetPreviewUrlAsync(newFileName);
+            _logger.Success($"[ReplaceImageAsync] Uploaded and generated preview URL: {previewUrl}");
+            return previewUrl;
+        }
+        catch (Exception ex)
+        {
+            _logger.Error($"[ReplaceImageAsync] Error occurred: {ex.Message}");
+            throw ErrorHelper.Internal("Lỗi khi xử lý ảnh.");
+        }
+    }
+
+    /// <summary>
+    ///     Determines the MIME content type based on the file extension.
+    /// </summary>
+    /// <param name="fileName">The name of the file.</param>
+    /// <returns>A string representing the MIME type.</returns>
     private string GetContentType(string fileName)
     {
-        _loggerService.Info($"Determining content type for: {fileName}");
-        var ext = Path.GetExtension(fileName)?.ToLowerInvariant();
+        _logger.Info($"Determining content type for file: {fileName}");
+        var extension = Path.GetExtension(fileName)?.ToLower();
 
-        return ext switch
+        return extension switch
         {
             ".jpg" or ".jpeg" => "image/jpeg",
             ".png" => "image/png",
-            ".gif" => "image/gif",
             ".pdf" => "application/pdf",
             ".mp4" => "video/mp4",
-            _ => "application/octet-stream" // Fallback nếu định dạng ko xác định
+            _ => "application/octet-stream" // Fallback for unknown types
         };
     }
 }

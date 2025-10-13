@@ -30,7 +30,7 @@ public class SystemController : ControllerBase
             await ClearDatabase(_context);
 
             await SeedRolesAndUsers();
-            // await SeedProductsAndCategories(); // Không cần cho hệ thống này
+            await SeedVehiclesForDefaultUser();
             return Ok(ApiResult<object>.Success(new
             {
                 Message = "Data seeded successfully."
@@ -70,7 +70,7 @@ public class SystemController : ControllerBase
                         _logger.Info("Đang xóa bảng StaffStation...");
                         await context.StaffStations.ExecuteDeleteAsync();
                     },
-                    
+
                     async () =>
                     {
                         _logger.Info("Đang xóa bảng Payment...");
@@ -91,7 +91,7 @@ public class SystemController : ControllerBase
                         _logger.Info("Đang xóa bảng Report...");
                         await context.Reports.ExecuteDeleteAsync();
                     },
-                   
+
                     async () =>
                     {
                         _logger.Info("Đang xóa bảng Connector...");
@@ -137,24 +137,7 @@ public class SystemController : ControllerBase
         });
     }
 
-    [HttpPost("seed-roles-users")]
-    public async Task<IActionResult> SeedRolesAndUsersEndpoint()
-    {
-        try
-        {
-            var seededUsers = await SeedRolesAndUsers();
-            return Ok(ApiResult<List<object>>.Success(seededUsers, "200", "Seeded roles and users successfully"));
-        }
-        catch (Exception ex)
-        {
-            _logger.Error($"SeedRolesAndUsersEndpoint error: {ex.Message}");
-            var statusCode = ExceptionUtils.ExtractStatusCode(ex);
-            var errorResponse = ExceptionUtils.CreateErrorResponse<List<object>>(ex);
-            return StatusCode(statusCode, errorResponse);
-        }
-    }
-
-    private async Task<List<object>> SeedRolesAndUsers()
+    private async Task SeedRolesAndUsers()
     {
         _logger.Info("Bắt đầu seed roles và users...");
 
@@ -214,14 +197,59 @@ public class SystemController : ControllerBase
         await _context.SaveChangesAsync();
 
         _logger.Success("Seed users thành công");
+    }
 
-        return users.Select(u => new
+    private async Task SeedVehiclesForDefaultUser()
+    {
+        _logger.Info("Bắt đầu seed vehicles cho user mặc định...");
+
+        var driver = await _context.Users.FirstOrDefaultAsync(u => u.Role == RoleType.Driver);
+        if (driver == null)
         {
-            u.Id,
-            u.Email,
-            Role = u.Role.ToString(),
-            u.FirstName,
-            u.LastName
-        }).Cast<object>().ToList();
+            _logger.Error("Không tìm thấy user mặc định có vai trò Driver.");
+            return;
+        }
+
+        var vehicles = new List<Vehicle>
+        {
+            new()
+            {
+                Make = "Tesla",
+                Model = "Model 3",
+                Year = 2022,
+                LicensePlate = "EV1234",
+                ConnectorType = ConnectorType.CCS,
+                UserId = driver.Id,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            },
+            new()
+            {
+                Make = "Nissan",
+                Model = "Leaf",
+                Year = 2021,
+                LicensePlate = "EV5678",
+                ConnectorType = ConnectorType.CHAdeMO,
+                UserId = driver.Id,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            },
+            new()
+            {
+                Make = "Hyundai",
+                Model = "Kona Electric",
+                Year = 2023,
+                LicensePlate = "EV9012",
+                ConnectorType = ConnectorType.CCS,
+                UserId = driver.Id,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            }
+        };
+
+        await _context.Vehicles.AddRangeAsync(vehicles);
+        await _context.SaveChangesAsync();
+
+        _logger.Success("Seed vehicles cho user mặc định thành công.");
     }
 }

@@ -87,7 +87,6 @@ public class EvChargingStationDbContext : DbContext
             .WithMany(u => u.Sessions)
             .HasForeignKey(s => s.UserId);
 
-        
 
         // Payment ↔ Session (many-to-one, optional)
         modelBuilder.Entity<Payment>()
