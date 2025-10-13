@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EVChargingStation.Domain.Migrations
 {
     [DbContext(typeof(EvChargingStationDbContext))]
-    [Migration("20251012070739_Initial")]
+    [Migration("20251013071654_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -72,73 +72,6 @@ namespace EVChargingStation.Domain.Migrations
                     b.HasIndex("StationId");
 
                     b.ToTable("Connectors");
-                });
-
-            modelBuilder.Entity("EVChargingStation.Domain.Entities.Invoice", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<decimal>("AmountPaid")
-                        .HasColumnType("numeric");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("DueDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime?>("IssuedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("PeriodEnd")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("PeriodStart")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid?>("SessionId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("SubtotalAmount")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("TaxAmount")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("TotalAmount")
-                        .HasColumnType("numeric");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Invoices");
                 });
 
             modelBuilder.Entity("EVChargingStation.Domain.Entities.Location", b =>
@@ -250,62 +183,11 @@ namespace EVChargingStation.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InvoiceId");
-
                     b.HasIndex("SessionId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Payments");
-                });
-
-            modelBuilder.Entity("EVChargingStation.Domain.Entities.Plan", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<decimal?>("MaxDailyKwh")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<decimal?>("Price")
-                        .HasColumnType("numeric");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Plans");
                 });
 
             modelBuilder.Entity("EVChargingStation.Domain.Entities.Recommendation", b =>
@@ -543,8 +425,6 @@ namespace EVChargingStation.Domain.Migrations
 
                     b.HasIndex("ConnectorId");
 
-                    b.HasIndex("InvoiceId");
-
                     b.HasIndex("ReservationId")
                         .IsUnique();
 
@@ -718,54 +598,6 @@ namespace EVChargingStation.Domain.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("EVChargingStation.Domain.Entities.UserPlan", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<Guid>("PlanId")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlanId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserPlans");
-                });
-
             modelBuilder.Entity("EVChargingStation.Domain.Entities.Vehicle", b =>
                 {
                     b.Property<Guid>("Id")
@@ -834,24 +666,8 @@ namespace EVChargingStation.Domain.Migrations
                     b.Navigation("Station");
                 });
 
-            modelBuilder.Entity("EVChargingStation.Domain.Entities.Invoice", b =>
-                {
-                    b.HasOne("EVChargingStation.Domain.Entities.User", "User")
-                        .WithMany("Invoices")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("EVChargingStation.Domain.Entities.Payment", b =>
                 {
-                    b.HasOne("EVChargingStation.Domain.Entities.Invoice", "Invoice")
-                        .WithMany("Payments")
-                        .HasForeignKey("InvoiceId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
                     b.HasOne("EVChargingStation.Domain.Entities.Session", "Session")
                         .WithMany("Payments")
                         .HasForeignKey("SessionId")
@@ -862,8 +678,6 @@ namespace EVChargingStation.Domain.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Invoice");
 
                     b.Navigation("Session");
 
@@ -939,11 +753,6 @@ namespace EVChargingStation.Domain.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EVChargingStation.Domain.Entities.Invoice", "Invoice")
-                        .WithMany("Sessions")
-                        .HasForeignKey("InvoiceId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
                     b.HasOne("EVChargingStation.Domain.Entities.Reservation", "Reservation")
                         .WithOne("Session")
                         .HasForeignKey("EVChargingStation.Domain.Entities.Session", "ReservationId");
@@ -955,8 +764,6 @@ namespace EVChargingStation.Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("Connector");
-
-                    b.Navigation("Invoice");
 
                     b.Navigation("Reservation");
 
@@ -993,25 +800,6 @@ namespace EVChargingStation.Domain.Migrations
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("EVChargingStation.Domain.Entities.UserPlan", b =>
-                {
-                    b.HasOne("EVChargingStation.Domain.Entities.Plan", "Plan")
-                        .WithMany("UserPlans")
-                        .HasForeignKey("PlanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EVChargingStation.Domain.Entities.User", "User")
-                        .WithMany("UserPlans")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Plan");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("EVChargingStation.Domain.Entities.Vehicle", b =>
                 {
                     b.HasOne("EVChargingStation.Domain.Entities.User", "User")
@@ -1032,21 +820,9 @@ namespace EVChargingStation.Domain.Migrations
                     b.Navigation("Sessions");
                 });
 
-            modelBuilder.Entity("EVChargingStation.Domain.Entities.Invoice", b =>
-                {
-                    b.Navigation("Payments");
-
-                    b.Navigation("Sessions");
-                });
-
             modelBuilder.Entity("EVChargingStation.Domain.Entities.Location", b =>
                 {
                     b.Navigation("Stations");
-                });
-
-            modelBuilder.Entity("EVChargingStation.Domain.Entities.Plan", b =>
-                {
-                    b.Navigation("UserPlans");
                 });
 
             modelBuilder.Entity("EVChargingStation.Domain.Entities.Reservation", b =>
@@ -1072,8 +848,6 @@ namespace EVChargingStation.Domain.Migrations
 
             modelBuilder.Entity("EVChargingStation.Domain.Entities.User", b =>
                 {
-                    b.Navigation("Invoices");
-
                     b.Navigation("Payments");
 
                     b.Navigation("Recommendations");
@@ -1085,8 +859,6 @@ namespace EVChargingStation.Domain.Migrations
                     b.Navigation("Sessions");
 
                     b.Navigation("StaffStations");
-
-                    b.Navigation("UserPlans");
 
                     b.Navigation("Vehicles");
                 });

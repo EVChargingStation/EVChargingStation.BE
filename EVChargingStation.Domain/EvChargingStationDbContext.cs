@@ -22,10 +22,7 @@ public class EvChargingStationDbContext : DbContext
     public DbSet<Connector> Connectors { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Session> Sessions { get; set; }
-    public DbSet<Invoice> Invoices { get; set; }
     public DbSet<Payment> Payments { get; set; }
-    public DbSet<Plan> Plans { get; set; }
-    public DbSet<UserPlan> UserPlans { get; set; }
     public DbSet<StaffStation> StaffStations { get; set; }
     public DbSet<Report> Reports { get; set; }
     public DbSet<Recommendation> Recommendations { get; set; }
@@ -90,27 +87,7 @@ public class EvChargingStationDbContext : DbContext
             .WithMany(u => u.Sessions)
             .HasForeignKey(s => s.UserId);
 
-        // Session ↔ Invoice (many-to-one, optional)
-        modelBuilder.Entity<Session>()
-            .HasOne(s => s.Invoice)
-            .WithMany(i => i.Sessions)
-            .HasForeignKey(s => s.InvoiceId)
-            .IsRequired(false)
-            .OnDelete(DeleteBehavior.SetNull);
-
-        // Invoice ↔ User (many-to-one)
-        modelBuilder.Entity<Invoice>()
-            .HasOne(i => i.User)
-            .WithMany(u => u.Invoices)
-            .HasForeignKey(i => i.UserId);
-
-        // Payment ↔ Invoice (many-to-one, optional)
-        modelBuilder.Entity<Payment>()
-            .HasOne(p => p.Invoice)
-            .WithMany(i => i.Payments)
-            .HasForeignKey(p => p.InvoiceId)
-            .IsRequired(false)
-            .OnDelete(DeleteBehavior.SetNull);
+        
 
         // Payment ↔ Session (many-to-one, optional)
         modelBuilder.Entity<Payment>()
@@ -125,18 +102,6 @@ public class EvChargingStationDbContext : DbContext
             .HasOne(p => p.User)
             .WithMany(u => u.Payments)
             .HasForeignKey(p => p.UserId);
-
-        // UserPlan ↔ User (many-to-one)
-        modelBuilder.Entity<UserPlan>()
-            .HasOne(up => up.User)
-            .WithMany(u => u.UserPlans)
-            .HasForeignKey(up => up.UserId);
-
-        // UserPlan ↔ Plan (many-to-one)
-        modelBuilder.Entity<UserPlan>()
-            .HasOne(up => up.Plan)
-            .WithMany(p => p.UserPlans)
-            .HasForeignKey(up => up.PlanId);
 
         // StaffStation ↔ User (many-to-one)
         modelBuilder.Entity<StaffStation>()

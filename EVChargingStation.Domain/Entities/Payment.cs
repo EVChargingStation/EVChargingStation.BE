@@ -19,6 +19,5 @@ public class Payment : BaseEntity
 
     // Navigation properties
     public User User { get; set; } = null!;
-    public Invoice? Invoice { get; set; }
     public Session? Session { get; set; }
 }

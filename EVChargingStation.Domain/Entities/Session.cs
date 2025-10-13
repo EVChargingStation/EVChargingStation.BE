@@ -32,6 +32,5 @@ public class Session : BaseEntity
     public Connector Connector { get; set; } = null!;
     public User User { get; set; } = null!;
     public Reservation? Reservation { get; set; }
-    public Invoice? Invoice { get; set; }
     public ICollection<Payment> Payments { get; set; } = new List<Payment>();
 }

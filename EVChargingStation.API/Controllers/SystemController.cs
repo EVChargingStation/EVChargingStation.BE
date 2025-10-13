@@ -60,8 +60,6 @@ public class SystemController : ControllerBase
 
                 var tablesToDelete = new List<Func<Task>>
                 {
-                    // Xóa theo thứ tự để tránh vi phạm ràng buộc khóa ngoại
-                    // 1. Xóa bảng trung gian và phụ thuộc nhiều nhất trước
                     async () =>
                     {
                         _logger.Info("Đang xóa bảng Recommendation...");
@@ -72,11 +70,7 @@ public class SystemController : ControllerBase
                         _logger.Info("Đang xóa bảng StaffStation...");
                         await context.StaffStations.ExecuteDeleteAsync();
                     },
-                    async () =>
-                    {
-                        _logger.Info("Đang xóa bảng UserPlan...");
-                        await context.UserPlans.ExecuteDeleteAsync();
-                    },
+                    
                     async () =>
                     {
                         _logger.Info("Đang xóa bảng Payment...");
@@ -97,11 +91,7 @@ public class SystemController : ControllerBase
                         _logger.Info("Đang xóa bảng Report...");
                         await context.Reports.ExecuteDeleteAsync();
                     },
-                    async () =>
-                    {
-                        _logger.Info("Đang xóa bảng Invoice...");
-                        await context.Invoices.ExecuteDeleteAsync();
-                    },
+                   
                     async () =>
                     {
                         _logger.Info("Đang xóa bảng Connector...");
@@ -123,11 +113,6 @@ public class SystemController : ControllerBase
                     {
                         _logger.Info("Đang xóa bảng Location...");
                         await context.Locations.ExecuteDeleteAsync();
-                    },
-                    async () =>
-                    {
-                        _logger.Info("Đang xóa bảng Plan...");
-                        await context.Plans.ExecuteDeleteAsync();
                     },
                     async () =>
                     {
@@ -181,8 +166,7 @@ public class SystemController : ControllerBase
                 FirstName = "Admin",
                 LastName = "User",
                 Email = "admin@evcharging.com",
-                PasswordHash =
-                    "AQAAAAIAAYagAAAAEF+6nDTnmVcyr9it4NRnUVKeQbgHBUO/9kW8JfNt+8//tXYQmYZvCZH/VT1G1DCNlQ==", // Admin@123
+                PasswordHash = new PasswordHasher().HashPassword("1@")!,
                 Phone = "0123456789",
                 Status = UserStatus.Active,
                 Role = RoleType.Admin,
@@ -198,8 +182,8 @@ public class SystemController : ControllerBase
                 FirstName = "Staff",
                 LastName = "User",
                 Email = "staff@evcharging.com",
-                PasswordHash =
-                    "AQAAAAIAAYagAAAAEOZBXQmLt+MH5heLf9JmCA0VnPZJEuKmVQq5XVsGYOjGv/nQiZNaO7Bez1G9NNWKNA==", // Staff@123
+                PasswordHash = new PasswordHasher().HashPassword("1@")!,
+
                 Phone = "0987654321",
                 Status = UserStatus.Active,
                 Role = RoleType.Staff,
@@ -215,7 +199,7 @@ public class SystemController : ControllerBase
                 FirstName = "Driver",
                 LastName = "User",
                 Email = "driver@evcharging.com",
-                PasswordHash = new PasswordHasher().HashPassword("Driver@123"),
+                PasswordHash = new PasswordHasher().HashPassword("1@")!,
                 Phone = "0912345678",
                 Status = UserStatus.Active,
                 Role = RoleType.Driver,
